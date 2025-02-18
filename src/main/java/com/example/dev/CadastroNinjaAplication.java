@@ -15,4 +15,4 @@ public class CadastroNinjaAplication {
 		System.getProperty("DATA_BASE_PASSWORD");
 
 	}
-}
+}	
