@@ -1,0 +1,2 @@
+ALTER TABLE tb_cadastro 
+ADD COLUMN clan VARCHAR(50);
