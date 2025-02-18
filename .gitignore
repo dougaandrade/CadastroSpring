@@ -13,7 +13,6 @@ target/
 .springBeans
 .sts4-cache
 
-
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -32,8 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
-
-
-### Gradle ###
-.env
 data/
+
+.env
