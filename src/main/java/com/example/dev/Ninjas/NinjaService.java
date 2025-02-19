@@ -11,43 +11,40 @@ public class NinjaService {
   private NinjaRepository ninjaRepository;
   private NinjaMapper ninjaMapper;
 
-  public NinjaService(NinjaRepository ninjaRepository) {
+  public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
     this.ninjaRepository = ninjaRepository;
     this.ninjaMapper = ninjaMapper;
   }
 
-  // Listar todos os ninjas
-  public List<NinjaModel> listarNinjas() {
-    return ninjaRepository.findAll();
+  public List<NinjaDTO> listarNinjas() {
+    List<NinjaModel> ninjas = ninjaRepository.findAll();
+    return ninjas.stream().map(ninjaMapper::map).toList();
   }
 
-  // Listar um ninja por id
-  public NinjaModel ninjaPorId(Long id) {
+  public NinjaDTO ninjaPorId(Long id) {
     Optional<NinjaModel> ninjaID = ninjaRepository.findById(id);
-    return ninjaID.orElse(null);
+    return ninjaID.map(ninjaMapper::map).orElse(null);
   }
 
-  // Criar um novo ninja
   public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
     NinjaModel ninja = ninjaMapper.map(ninjaDTO);
     ninja = ninjaRepository.save(ninja);
     return ninjaMapper.map(ninja);
-
   }
 
-  // Deletar um ninja
   public void deletarNinjaID(Long id) {
     ninjaRepository.deleteById(id);
   }
 
-  // Atualizar NINJA
-  public NinjaModel atualizarNinja(Long id, NinjaModel ninja) {
-    if (ninjaRepository.existsById(id)) {
-      ninja.setId(id);
-      return ninjaRepository.save(ninja);
-    } else {
-      return null;
+  public NinjaDTO atualizarNinja(Long id, NinjaDTO ninjaDTO) {
+    Optional<NinjaModel> ninjaID = ninjaRepository.findById(id);
+    if (ninjaID.isPresent()) {
+      NinjaModel ninjaModel = ninjaMapper.map(ninjaDTO);
+      ninjaModel.setId(id);
+      NinjaModel ninjaSalvo = ninjaRepository.save(ninjaModel);
+      return ninjaMapper.map(ninjaSalvo);
     }
+    return null;
   }
 
 }
