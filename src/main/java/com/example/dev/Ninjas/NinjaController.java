@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dev.Missoes.MissoesModel;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class NinjaController {
 
     protected NinjaService ninjaService;
+
     public NinjaController(NinjaService ninjaService) {
         this.ninjaService = ninjaService;
     }
@@ -27,24 +26,25 @@ public class NinjaController {
     public String BoasVindas() {
         return "Bem vindo ao Cadastro de Ninja";
     }
+
     @PostMapping("/criar")
     public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
         return ninjaService.criarNinja(ninja);
     }
-    
-    @GetMapping("/all")
+
+    @GetMapping("/listar")
     public List<NinjaModel> listarNinjas() {
         return ninjaService.listarNinjas();
     }
-    
+
     @GetMapping("/listar/{id}")
     public NinjaModel ninjaPorId(@PathVariable Long id) {
         return ninjaService.ninjaPorId(id);
     }
 
-    @PutMapping("/atualizar")
-    public String atualizarNinja() {
-        return "Ninja com id  atualizado";
+    @PutMapping("/atualizar/{id}")
+    public NinjaModel atualizarNinja(@PathVariable Long id, @RequestBody NinjaModel ninja) {
+        return ninjaService.atualizarNinja(id, ninja);
     }
 
     @DeleteMapping("/deletar/{id}")
