@@ -19,9 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class NinjaController {
 
     protected NinjaService ninjaService;
-    
-        public NinjaController(NinjaService ninjaService) {
-            this.ninjaService = ninjaService;
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
     }
 
     @GetMapping("/bemvindo")
@@ -29,7 +28,7 @@ public class NinjaController {
         return "Bem vindo ao Cadastro de Ninja";
     }
     @PostMapping("/criar")
-    public  NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
         return ninjaService.criarNinja(ninja);
     }
     
@@ -48,9 +47,9 @@ public class NinjaController {
         return "Ninja com id  atualizado";
     }
 
-    @DeleteMapping("/deletarID")
-    public String deletarNinja() {
-        return "Ninja com id deletado";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarNinjaID(@PathVariable Long id) {
+        ninjaService.deletarNinjaID(id);
     }
 
 }
