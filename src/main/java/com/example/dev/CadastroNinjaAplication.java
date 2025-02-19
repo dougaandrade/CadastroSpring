@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 
+
 @SpringBootApplication
 public class CadastroNinjaAplication {
 
@@ -13,6 +14,6 @@ public class CadastroNinjaAplication {
 		System.getProperty("DATA_BASE_URL");
 		System.getProperty("DATA_BASE_USERNAME");
 		System.getProperty("DATA_BASE_PASSWORD");
-
+	
 	}
-}	
+}

@@ -3,6 +3,8 @@ package com.example.dev.Missoes;
 import java.util.List;
 
 import com.example.dev.Ninjas.NinjaModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +30,7 @@ public class MissoesModel {
 
     //@OneToMany  uma missao tem varios ninjas (UM PARA MUITOS NINJAS)
     @OneToMany(mappedBy = "missoes")
+    @JsonIgnore
     private List<NinjaModel> ninjas;
 
 }
