@@ -1,15 +1,19 @@
-package com.example.dev.Ninjas;
+package com.example.dev.Ninjas.Controller;
 
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.dev.Ninjas.DTO.NinjaDTO;
+import com.example.dev.Ninjas.Service.NinjaService;
+
+import io.swagger.v3.oas.annotations.Operation;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -26,11 +30,13 @@ public class NinjaController {
     }
 
     @GetMapping("/bemvindo")
+    @Operation(summary = "Bem vindo ao Cadastro de Ninja")
     public String BoasVindas() {
         return "Bem vindo ao Cadastro de Ninja";
     }
 
     @PostMapping("/criar")
+    @Operation(summary = "Cria um novo ninja", description = "Rota cria um novo ninja e insere no banco de dados")
     public ResponseEntity<String> criarNinja(@RequestBody NinjaDTO ninja) {
         NinjaDTO ninjaDTO = ninjaService.criarNinja(ninja);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -44,6 +50,7 @@ public class NinjaController {
     }
 
     @GetMapping("/listar/{id}")
+    @Operation(summary = "Lista o ninja por Id", description = "Rota lista um ninja pelo seu id")
     public ResponseEntity<?> ninjaPorId(@PathVariable Long id) {
         NinjaDTO ninjaDTO = ninjaService.ninjaPorId(id);
         if (ninjaDTO != null) {
@@ -55,6 +62,7 @@ public class NinjaController {
     }
 
     @PutMapping("/alterar/{id}")
+    @Operation(summary = "Altera o ninja por Id", description = "Rota altera um ninja pelo seu id")
     public ResponseEntity<String> atualizarNinja(@PathVariable Long id, @RequestBody NinjaDTO ninja) {
         NinjaDTO ninjaDTO = ninjaService.atualizarNinja(id, ninja);
         if (ninjaDTO != null) {

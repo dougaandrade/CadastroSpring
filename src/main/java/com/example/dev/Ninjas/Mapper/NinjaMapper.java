@@ -1,6 +1,9 @@
-package com.example.dev.Ninjas;
+package com.example.dev.Ninjas.Mapper;
 
 import org.springframework.stereotype.Component;
+
+import com.example.dev.Ninjas.DTO.NinjaDTO;
+import com.example.dev.Ninjas.Model.NinjaModel;
 
 @Component
 public class NinjaMapper {

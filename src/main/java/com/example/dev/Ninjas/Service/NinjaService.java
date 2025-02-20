@@ -1,9 +1,14 @@
-package com.example.dev.Ninjas;
+package com.example.dev.Ninjas.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+
+import com.example.dev.Ninjas.DTO.NinjaDTO;
+import com.example.dev.Ninjas.Mapper.NinjaMapper;
+import com.example.dev.Ninjas.Model.NinjaModel;
+import com.example.dev.Ninjas.Repository.NinjaRepository;
 
 @Service
 public class NinjaService {

@@ -1,10 +1,10 @@
-package com.example.dev.Ninjas;
-
-import com.example.dev.Missoes.MissoesModel;
+package com.example.dev.Ninjas.DTO;
 
 import lombok.Data;
 
 import lombok.NoArgsConstructor;
+
+import com.example.dev.Missoes.Model.MissoesModel;
 
 import lombok.AllArgsConstructor;
 

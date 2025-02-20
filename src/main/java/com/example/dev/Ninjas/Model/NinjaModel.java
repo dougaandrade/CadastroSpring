@@ -1,6 +1,6 @@
-package com.example.dev.Ninjas;
+package com.example.dev.Ninjas.Model;
 
-import com.example.dev.Missoes.MissoesModel;
+import com.example.dev.Missoes.Model.MissoesModel;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
