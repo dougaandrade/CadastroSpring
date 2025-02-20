@@ -13,8 +13,8 @@ import com.example.dev.Missoes.Repository.MissoesRepository;
 @Service
 public class MissoesService {
 
-  public MissoesMapper missoesMapper;
-  public MissoesRepository missoesRepository;
+  public final MissoesMapper missoesMapper;
+  public final MissoesRepository missoesRepository;
 
   public MissoesService(MissoesMapper missoesMapper, MissoesRepository missoesRepository) {
     this.missoesMapper = missoesMapper;
