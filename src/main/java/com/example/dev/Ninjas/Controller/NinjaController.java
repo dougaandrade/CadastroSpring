@@ -57,7 +57,7 @@ public class NinjaController {
             return ResponseEntity.ok().body(ninjaDTO);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Ninja com ID " + id + " não encontrado");
+                    .body("ID " + id + " não encontrado");
         }
     }
 
