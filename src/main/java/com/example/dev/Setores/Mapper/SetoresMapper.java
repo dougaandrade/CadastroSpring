@@ -11,8 +11,8 @@ public class SetoresMapper {
   public SetoresDTO map(SetoresModel setores) {
     SetoresDTO setoresDTO = new SetoresDTO();
     setoresDTO.setId(setores.getId());
-    setoresDTO.setNomeSetor(setores.getNomeSetor());
-    setoresDTO.setDescricaoSetor(setores.getDescricaoSetor());
+    setoresDTO.setSetor(setores.getSetor());
+    setoresDTO.setDescricao(setores.getDescricao());
 
     return setoresDTO;
 
@@ -21,8 +21,8 @@ public class SetoresMapper {
   public SetoresModel map(SetoresDTO setoresDTO) {
     SetoresModel setoresModel = new SetoresModel();
     setoresModel.setId(setoresDTO.getId());
-    setoresModel.setNomeSetor(setoresDTO.getNomeSetor());
-    setoresModel.setDescricaoSetor(setoresDTO.getDescricaoSetor());
+    setoresModel.setSetor(setoresDTO.getSetor());
+    setoresModel.setDescricao(setoresDTO.getDescricao());
 
     return setoresModel;
   }

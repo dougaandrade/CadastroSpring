@@ -1,4 +1,4 @@
-package com.example.dev.Cliente.Model;
+package com.example.dev.Funcionarios.Model;
 
 import java.sql.Timestamp;
 
@@ -15,8 +15,8 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "setores")
-public class ClienteModel {
+@ToString(exclude = "setor")
+public class FuncionariosModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class ClienteModel {
     private Timestamp dataNascimento;
 
     @ManyToOne
-    @JoinColumn(name = "setores_id")
-    private SetoresModel setores;
+    @JoinColumn(name = "setor_id")
+    private SetoresModel setor;
 
 }

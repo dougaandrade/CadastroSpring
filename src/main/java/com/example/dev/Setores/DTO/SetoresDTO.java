@@ -2,7 +2,7 @@ package com.example.dev.Setores.DTO;
 
 import java.util.List;
 
-import com.example.dev.Cliente.Model.ClienteModel;
+import com.example.dev.Funcionarios.Model.FuncionariosModel;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 public class SetoresDTO {
 
   private Long id;
-  private String nomeSetor;
-  private String descricaoSetor;
-  private List<ClienteModel> clientes;
+  private String setor;
+  private String descricao;
+  private List<FuncionariosModel> clientes;
 
 }

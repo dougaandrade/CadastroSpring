@@ -1,4 +1,4 @@
-package com.example.dev.Cliente.DTO;
+package com.example.dev.Funcionarios.DTO;
 
 import lombok.Data;
 
@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ClienteDTO {
+public class FuncionariosDTO {
 
   private long id;
   private String nome;
@@ -22,6 +22,6 @@ public class ClienteDTO {
   private int idade;
   private int cpf;
   private Timestamp dataNascimento;
-  private SetoresModel setores;
+  private SetoresModel setor;
 
 }

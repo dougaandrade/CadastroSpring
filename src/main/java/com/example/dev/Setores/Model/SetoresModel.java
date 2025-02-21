@@ -2,9 +2,10 @@ package com.example.dev.Setores.Model;
 
 import java.util.List;
 
-import com.example.dev.Cliente.Model.ClienteModel;
+import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,13 +25,16 @@ public class SetoresModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_setor")
     private Long id;
-    private String nomeSetor;
-    private String descricaoSetor;
+    @Column(unique = true, name = "nome_setor")
+    private String setor;
+    @Column(name = "descricao_setor")
+    private String descricao;
 
-    // @OneToMany uma missao tem varios ninjas (UM PARA MUITOS NINJAS)
-    @OneToMany(mappedBy = "setores")
+    // @OneToMany um setor tem varios funcionarios (UM PARA MUITOS RELACAO)
+    @OneToMany(mappedBy = "setor")
     @JsonIgnore
-    private List<ClienteModel> clientes;
+    private List<FuncionariosModel> funcionarios;
 
 }

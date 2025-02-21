@@ -9,6 +9,7 @@ Este projeto é um sistema de cadastro e gerenciamento de pessoas e setores, des
 - ✅ **H2 Database** – Banco de dados em memória para testes.
 - ✅ **Lombok** – Para reduzir a verbosidade do código.
 - ✅ **Swagger** – Para documentação da API.
+- ✅ **Postman** – Para testes e desenvolvimento.
 
 ## 🔥 Funcionalidades
 
@@ -22,6 +23,7 @@ Este projeto é um sistema de cadastro e gerenciamento de pessoas e setores, des
 ### 📌 Pré-requisitos
 
 Antes de começar, você precisará ter instalado em sua máquina:
+
 - **JDK 17** ou superior
 - **Maven**
 - **Git**
@@ -49,6 +51,7 @@ mvn spring-boot:run
 ### 🛠 Acessando a API
 
 Após iniciar o projeto, você pode acessar:
+
 - **Swagger UI:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 - **Banco de dados H2 Console:** [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
 
@@ -59,4 +62,3 @@ Este projeto está licenciado sob a **MIT License** – veja o arquivo **LICENSE
 ---
 
 Este projeto serve como base para aplicações que necessitam de um sistema de gerenciamento de cadastros, podendo ser expandido conforme necessário. 🚀
-
