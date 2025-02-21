@@ -16,6 +16,6 @@ public class SetoresDTO {
   private Long id;
   private String setor;
   private String descricao;
-  private List<FuncionariosModel> clientes;
+  private List<FuncionariosModel> funcionarios;
 
 }
