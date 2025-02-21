@@ -1,7 +1,6 @@
 package com.example.dev.Funcionarios.Model;
 
 import java.time.LocalDate;
-
 import com.example.dev.Setores.Model.SetoresModel;
 
 import jakarta.persistence.*;

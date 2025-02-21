@@ -11,6 +11,5 @@ public class CadastroAplication {
 		System.getProperty("DATA_BASE_URL");
 		System.getProperty("DATA_BASE_USERNAME");
 		System.getProperty("DATA_BASE_PASSWORD");
-
 	}
 }
