@@ -1,6 +1,6 @@
 package com.example.dev.Funcionarios.Model;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import com.example.dev.Setores.Model.SetoresModel;
 
@@ -36,7 +36,7 @@ public class FuncionariosModel {
     private int cpf;
 
     @Column(name = "data_nascimento")
-    private Timestamp dataNascimento;
+    private LocalDate dataNascimento;
 
     @ManyToOne
     @JoinColumn(name = "setor_id")

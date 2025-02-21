@@ -4,7 +4,7 @@ import lombok.Data;
 
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import com.example.dev.Setores.Model.SetoresModel;
 
@@ -21,7 +21,8 @@ public class FuncionariosDTO {
   private String email;
   private int idade;
   private int cpf;
-  private Timestamp dataNascimento;
+  private LocalDate dataNascimento;
+
   private SetoresModel setor;
 
 }

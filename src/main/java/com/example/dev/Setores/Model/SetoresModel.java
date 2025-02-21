@@ -25,6 +25,7 @@ public class SetoresModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id_setor")
     private Long id;
     @Column(unique = true, name = "nome_setor")
