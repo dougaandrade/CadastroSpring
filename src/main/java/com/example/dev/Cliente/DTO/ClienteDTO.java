@@ -1,10 +1,12 @@
-package com.example.dev.Ninjas.DTO;
+package com.example.dev.Cliente.DTO;
 
 import lombok.Data;
 
 import lombok.NoArgsConstructor;
 
-import com.example.dev.Missoes.Model.MissoesModel;
+import java.sql.Timestamp;
+
+import com.example.dev.Setores.Model.SetoresModel;
 
 import lombok.AllArgsConstructor;
 
@@ -12,15 +14,14 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class NinjaDTO {
+public class ClienteDTO {
 
   private long id;
   private String nome;
   private String email;
-  private String imgUrl;
-  private String rank;
   private int idade;
-  private MissoesModel missoes;
-  private String clan;
+  private int cpf;
+  private Timestamp dataNascimento;
+  private SetoresModel setores;
 
 }

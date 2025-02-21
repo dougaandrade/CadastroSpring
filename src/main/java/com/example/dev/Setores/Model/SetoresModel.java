@@ -1,8 +1,8 @@
-package com.example.dev.Missoes.Model;
+package com.example.dev.Setores.Model;
 
 import java.util.List;
 
-import com.example.dev.Ninjas.Model.NinjaModel;
+import com.example.dev.Cliente.Model.ClienteModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -16,21 +16,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tb_missoes")
+@Table(name = "tb_setores")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MissoesModel {
+public class SetoresModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String dificuldade;
+    private String nomeSetor;
+    private String descricaoSetor;
 
     // @OneToMany uma missao tem varios ninjas (UM PARA MUITOS NINJAS)
-    @OneToMany(mappedBy = "missoes")
+    @OneToMany(mappedBy = "setores")
     @JsonIgnore
-    private List<NinjaModel> ninjas;
+    private List<ClienteModel> clientes;
 
 }

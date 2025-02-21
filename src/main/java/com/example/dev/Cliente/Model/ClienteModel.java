@@ -1,6 +1,8 @@
-package com.example.dev.Ninjas.Model;
+package com.example.dev.Cliente.Model;
 
-import com.example.dev.Missoes.Model.MissoesModel;
+import java.sql.Timestamp;
+
+import com.example.dev.Setores.Model.SetoresModel;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,8 +15,8 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "missoes")
-public class NinjaModel {
+@ToString(exclude = "setores")
+public class ClienteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,20 +29,17 @@ public class NinjaModel {
     @Column(unique = true)
     private String email;
 
-    @Column(name = "img_url")
-    private String imgUrl;
-
-    @Column(name = "rank")
-    private String rank;
-
     @Column(name = "idade")
     private int idade;
 
-    @Column(name = "clan")
-    private String clan;
+    @Column(name = "cpf")
+    private int cpf;
+
+    @Column(name = "data_nascimento")
+    private Timestamp dataNascimento;
 
     @ManyToOne
-    @JoinColumn(name = "missoes_id")
-    private MissoesModel missoes;
+    @JoinColumn(name = "setores_id")
+    private SetoresModel setores;
 
 }
