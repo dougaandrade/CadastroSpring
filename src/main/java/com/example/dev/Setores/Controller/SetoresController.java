@@ -16,7 +16,7 @@ import com.example.dev.Setores.DTO.SetoresDTO;
 import com.example.dev.Setores.Service.SetoresService;
 
 @RestController
-@RequestMapping("/setores")
+@RequestMapping("/setor")
 public class SetoresController {
 
   SetoresService setoresService;
