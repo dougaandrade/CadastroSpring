@@ -11,6 +11,7 @@ Este projeto é um sistema de cadastro e gerenciamento de pessoas e setores, des
 - ✅ **Lombok** – Para reduzir a verbosidade do código.
 - ✅ **Swagger** – Para documentação da API.
 - ✅ **Postman** – Para testes e desenvolvimento.
+- ✅ **DBeaver** – Cliente SQL para gerenciar o banco de dados.
 
 ## 🔥 Funcionalidades
 
@@ -22,12 +23,14 @@ Este projeto é um sistema de cadastro e gerenciamento de pessoas e setores, des
 ## 📂 Como Executar o Projeto
 
 ### 📌 Pré-requisitos
+
 Antes de começar, você precisará ter instalado em sua máquina:
 
 - ✅ **JDK 17** ou superior
 - ✅ **Maven**
 - ✅ **Git**
 - ✅ **Docker e Docker Compose**
+- ✅ **DBeaver** (opcional, para acessar o banco de dados)
 
 ### 🚀 Clonando o Repositório
 
@@ -64,4 +67,3 @@ Após iniciar o projeto, você pode acessar:
 Este projeto está licenciado sob a MIT License – veja o arquivo LICENSE para mais detalhes.
 
 🚀 **Este projeto serve como base para aplicações que necessitam de um sistema de gerenciamento de cadastros, podendo ser expandido conforme necessário.**
-
