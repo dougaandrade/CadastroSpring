@@ -34,7 +34,7 @@ public class SetoresModel {
     private String descricao;
 
     @OneToMany(mappedBy = "setor")
-    @JsonIgnore
+    @JsonIgnore // Ignorar o relacionamento com os funcionários
     private List<FuncionariosModel> funcionarios;
 
 }
