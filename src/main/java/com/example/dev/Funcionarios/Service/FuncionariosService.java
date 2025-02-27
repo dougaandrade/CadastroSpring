@@ -26,8 +26,8 @@ public class FuncionariosService {
     return funcionarios.stream().map(funcionariosMapper::map).toList();
   }
 
-  public FuncionariosDTO funcionariosPorId(Long id) {
-    Optional<FuncionariosModel> funcionariosID = funcionariosRepository.findById(id);
+  public FuncionariosDTO funcionariosByCod(Long codFuncionario) {
+    Optional<FuncionariosModel> funcionariosID = funcionariosRepository.findByCodFuncionario(codFuncionario);
     return funcionariosID.map(funcionariosMapper::map).orElse(null);
   }
 
@@ -37,12 +37,12 @@ public class FuncionariosService {
     return funcionariosMapper.map(funcionario);
   }
 
-  public void deletarFuncionarioID(Long id) {
-    funcionariosRepository.deleteById(id);
+  public void deletarFuncionarioCod(Long codFuncionario) {
+    funcionariosRepository.deleteById(codFuncionario);
   }
 
-  public FuncionariosDTO atualizarFuncionarioId(Long id, FuncionariosDTO funcionarioDTO) {
-    Optional<FuncionariosModel> funcionarioId = funcionariosRepository.findById(id);
+  public FuncionariosDTO atualizarFuncionarioByCod(Long codFuncionario, FuncionariosDTO funcionarioDTO) {
+    Optional<FuncionariosModel> funcionarioId = funcionariosRepository.findByCodFuncionario(codFuncionario);
     if (funcionarioId.isPresent()) {
       FuncionariosModel funcionarioModel = funcionarioId.get();
       if (funcionarioDTO.getNome() != null) {

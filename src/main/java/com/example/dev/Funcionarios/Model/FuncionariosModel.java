@@ -19,8 +19,9 @@ public class FuncionariosModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+
+    @Column(name = "cod_funcionario")
+    private Long codFuncionario;
 
     @Column(name = "nome")
     private String nome;

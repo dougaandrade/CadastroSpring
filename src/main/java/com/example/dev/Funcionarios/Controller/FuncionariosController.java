@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/func")
+@RequestMapping("/user")
 public class FuncionariosController {
 
     protected FuncionariosService funcionariosService;
@@ -34,8 +34,7 @@ public class FuncionariosController {
     public ResponseEntity<String> criarFuncionario(@RequestBody FuncionariosDTO funcionario) {
         FuncionariosDTO funcionarioDTO = funcionariosService.criarNovoFuncionario(funcionario);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body("Funcionario criado com sucesso " + funcionarioDTO.getNome() + " com ID: "
-                        + funcionarioDTO.getId());
+                .body("Funcionario criado com sucesso " + funcionarioDTO.getNome());
 
     }
 
@@ -45,39 +44,39 @@ public class FuncionariosController {
         return ResponseEntity.ok(funcionario);
     }
 
-    @GetMapping("/listar/{id}")
+    @GetMapping("/obter/{codFuncionario}")
     @Operation(summary = "Lista o funcionario por Id", description = "Rota lista um funcionario pelo seu id")
-    public ResponseEntity<Object> funcionarioPorId(@PathVariable Long id) {
-        FuncionariosDTO funcionarioDTO = funcionariosService.funcionariosPorId(id);
+    public ResponseEntity<Object> funcionarioPorId(@PathVariable Long codFuncionario) {
+        FuncionariosDTO funcionarioDTO = funcionariosService.funcionariosByCod(codFuncionario);
         if (funcionarioDTO != null) {
             return ResponseEntity.ok().body(funcionarioDTO);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("ID " + id + " não encontrado");
+                    .body("Codigo do funcionario " + codFuncionario + " não encontrado");
         }
     }
 
-    @PatchMapping("/alterar/{id}")
+    @PatchMapping("/alterar/{codFuncionario}")
     @Operation(summary = "Altera o funcionario por Id", description = "Rota altera um funcionario pelo seu id")
-    public ResponseEntity<String> atualizarFuncionarioId(@PathVariable Long id,
+    public ResponseEntity<String> atualizarFuncionarioId(@PathVariable Long codFuncionario,
             @RequestBody FuncionariosDTO funcionarios) {
-        FuncionariosDTO funcionariosDTO = funcionariosService.atualizarFuncionarioId(id, funcionarios);
+        FuncionariosDTO funcionariosDTO = funcionariosService.atualizarFuncionarioByCod(codFuncionario, funcionarios);
         if (funcionariosDTO != null) {
-            return ResponseEntity.ok().body("Funcionario com ID " + id + " atualizado com sucesso");
+            return ResponseEntity.ok().body("Funcionario " + codFuncionario + " atualizado com sucesso");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Funcionario com ID " + id + " não encontrado");
+                    .body("Funcionario " + codFuncionario + " não encontrado");
         }
     }
 
-    @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<String> deletarFuncionarioID(@PathVariable Long id) {
-        if (funcionariosService.funcionariosPorId(id) != null) {
-            funcionariosService.deletarFuncionarioID(id);
-            return ResponseEntity.ok().body("Funcionario com ID " + id + " deletado com sucesso");
+    @DeleteMapping("/deletar/{codFuncionario}")
+    public ResponseEntity<String> deletarFuncionarioByCod(@PathVariable Long codFuncionario) {
+        if (funcionariosService.funcionariosByCod(codFuncionario) != null) {
+            funcionariosService.deletarFuncionarioCod(codFuncionario);
+            return ResponseEntity.ok().body("Funcionario com o nome " + codFuncionario + " deletado com sucesso");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Funcionario com ID " + id + " não encontrado");
+                    .body("Funcionario com o nome " + codFuncionario + " não encontrado");
         }
     }
 
