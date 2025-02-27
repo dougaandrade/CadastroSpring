@@ -44,8 +44,26 @@ public class FuncionariosService {
   public FuncionariosDTO atualizarFuncionarioId(Long id, FuncionariosDTO funcionarioDTO) {
     Optional<FuncionariosModel> funcionarioId = funcionariosRepository.findById(id);
     if (funcionarioId.isPresent()) {
-      FuncionariosModel funcionarioModel = funcionariosMapper.map(funcionarioDTO);
-      funcionarioModel.setId(id);
+      FuncionariosModel funcionarioModel = funcionarioId.get();
+      if (funcionarioDTO.getNome() != null) {
+        funcionarioModel.setNome(funcionarioDTO.getNome());
+      }
+      if (funcionarioDTO.getEmail() != null) {
+        funcionarioModel.setEmail(funcionarioDTO.getEmail());
+      }
+      if (funcionarioDTO.getIdade() != 0) {
+        funcionarioModel.setIdade(funcionarioDTO.getIdade());
+      }
+      if (funcionarioDTO.getCpf() != 0) {
+        funcionarioModel.setCpf(funcionarioDTO.getCpf());
+      }
+      if (funcionarioDTO.getDataNascimento() != null) {
+        funcionarioModel.setDataNascimento(funcionarioDTO.getDataNascimento());
+      }
+      if (funcionarioDTO.getSetor() != null) {
+        funcionarioModel.setSetor(funcionarioDTO.getSetor());
+      }
+
       FuncionariosModel funcionarioSalvo = funcionariosRepository.save(funcionarioModel);
       return funcionariosMapper.map(funcionarioSalvo);
     }

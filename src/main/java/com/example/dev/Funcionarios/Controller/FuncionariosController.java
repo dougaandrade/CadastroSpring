@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,6 @@ import com.example.dev.Funcionarios.Service.FuncionariosService;
 import io.swagger.v3.oas.annotations.Operation;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -56,7 +56,7 @@ public class FuncionariosController {
         }
     }
 
-    @PutMapping("/alterar/{id}")
+    @PatchMapping("/alterar/{id}")
     @Operation(summary = "Altera o funcionario por Id", description = "Rota altera um funcionario pelo seu id")
     public ResponseEntity<String> atualizarFuncionarioId(@PathVariable Long id,
             @RequestBody FuncionariosDTO funcionarios) {
