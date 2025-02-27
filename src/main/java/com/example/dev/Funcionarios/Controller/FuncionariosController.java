@@ -56,6 +56,10 @@ public class FuncionariosController {
         }
     }
 
+<<<<<<< HEAD
+=======
+    // to do change this in Patch
+>>>>>>> d1db835 (todo/PACH USER)
     @PatchMapping("/alterar/{id}")
     @Operation(summary = "Altera o funcionario por Id", description = "Rota altera um funcionario pelo seu id")
     public ResponseEntity<String> atualizarFuncionarioId(@PathVariable Long id,
