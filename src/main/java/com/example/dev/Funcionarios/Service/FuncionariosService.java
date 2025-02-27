@@ -3,7 +3,6 @@ package com.example.dev.Funcionarios.Service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.example.dev.Funcionarios.DTO.FuncionariosDTO;
@@ -43,7 +42,6 @@ public class FuncionariosService {
   }
 
   public FuncionariosDTO atualizarFuncionarioId(Long id, FuncionariosDTO funcionarioDTO) {
-<<<<<<< HEAD
     Optional<FuncionariosModel> funcionarioId = funcionariosRepository.findById(id);
     if (funcionarioId.isPresent()) {
       FuncionariosModel funcionarioModel = funcionarioId.get();
@@ -56,7 +54,7 @@ public class FuncionariosService {
       if (funcionarioDTO.getIdade() != 0) {
         funcionarioModel.setIdade(funcionarioDTO.getIdade());
       }
-      if (funcionarioDTO.getCpf() != 0) {
+      if (funcionarioDTO.getCpf() != null) {
         funcionarioModel.setCpf(funcionarioDTO.getCpf());
       }
       if (funcionarioDTO.getDataNascimento() != null) {
@@ -65,17 +63,9 @@ public class FuncionariosService {
       if (funcionarioDTO.getSetor() != null) {
         funcionarioModel.setSetor(funcionarioDTO.getSetor());
       }
-
-=======
-    Optional<FuncionariosModel> funcionarioOptional = funcionariosRepository.findById(id);
-    if (funcionarioOptional.isPresent()) {
-      FuncionariosModel funcionarioModel = funcionarioOptional.get(); // Obtendo o objeto correto
-      BeanUtils.copyProperties(funcionarioDTO, funcionarioModel); // Copiando os dados para o modelo existente
->>>>>>> d1db835 (todo/PACH USER)
       FuncionariosModel funcionarioSalvo = funcionariosRepository.save(funcionarioModel);
       return funcionariosMapper.map(funcionarioSalvo);
     }
     return null;
   }
-
 }

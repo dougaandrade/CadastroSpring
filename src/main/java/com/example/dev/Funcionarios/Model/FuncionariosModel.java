@@ -32,7 +32,7 @@ public class FuncionariosModel {
     private int idade;
 
     @Column(name = "cpf")
-    private int cpf;
+    private String cpf;
 
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;

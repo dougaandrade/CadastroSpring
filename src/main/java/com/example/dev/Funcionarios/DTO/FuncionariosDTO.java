@@ -20,7 +20,7 @@ public class FuncionariosDTO {
   private String nome;
   private String email;
   private int idade;
-  private int cpf;
+  private String cpf;
   private LocalDate dataNascimento;
 
   private SetoresModel setor;
