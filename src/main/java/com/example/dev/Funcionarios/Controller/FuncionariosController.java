@@ -35,7 +35,6 @@ public class FuncionariosController {
         FuncionariosDTO funcionarioDTO = funcionariosService.criarNovoFuncionario(funcionario);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Funcionario criado com sucesso " + funcionarioDTO.getNome());
-
     }
 
     @GetMapping("/listar")
