@@ -25,7 +25,16 @@ public class SetoresController {
     this.setoresService = setoresService;
   }
 
+  // Post -- Mandar uma requisao para criar as missoes
+
+  @PostMapping("/criar")
+  public ResponseEntity<String> criarSetor(@RequestBody SetoresDTO setores) {
+    setoresService.criarSetor(setores);
+    return ResponseEntity.status(201).body("Setor criado com sucesso");
+  }
+
   // GET -- Mandar uma requisao para mostrar as setores
+
   @GetMapping("/listar")
   public ResponseEntity<List<SetoresDTO>> listarSetores() {
     List<SetoresDTO> setores = setoresService.listarSetor();
@@ -34,26 +43,21 @@ public class SetoresController {
 
   // GET -- Mandar uma requisao para mostrar as missoes
 
-  @GetMapping("/listar/{id}")
+  @GetMapping("/obter/{id}")
   public ResponseEntity<SetoresDTO> setoresPorId(@PathVariable Long id) {
-    SetoresDTO setoresDTO = setoresService.setoresPorId(id);
+    SetoresDTO setoresDTO = setoresService.obterPorId(id);
     return ResponseEntity.ok(setoresDTO);
   }
 
-  // Post -- Mandar uma requisao para criar as missoes
-  @PostMapping("/criar")
-  public ResponseEntity<String> criarSetor(@RequestBody SetoresDTO setores) {
-    setoresService.criarSetor(setores);
-    return ResponseEntity.status(201).body("Setor criado com sucesso");
-  }
-
   // PUT -- Mandar uma requisao para alterar as missoes
-  @PutMapping("/atualizar/{id}")
+
+  @PutMapping("/alterar/{id}")
   public ResponseEntity<String> atualizarMisssao(@PathVariable Long id, @RequestBody SetoresDTO SetoresDTO) {
     return ResponseEntity.ok().body("Setor com ID " + id + " atualizada com sucesso");
   }
 
   // Delete -- Mandar uma requisao para deletar as missoes
+
   @DeleteMapping("/deletar/{id}")
   public ResponseEntity<String> deletarMisssao(@PathVariable Long id) {
     setoresService.deletarSetorID(id);

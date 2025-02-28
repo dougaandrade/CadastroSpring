@@ -27,16 +27,30 @@ public class SetoresService {
     return setoresMapper.map(setores);
   }
 
-  public SetoresDTO setoresPorId(Long id) {
+  public List<SetoresDTO> listarSetor() {
+    List<SetoresModel> setores = setoresRepository.findAll();
+    return setores.stream().map(setoresMapper::map).toList();
+
+  }
+
+  public SetoresDTO obterPorId(Long id) {
     Optional<SetoresModel> setoresID = setoresRepository.findById(id);
     return setoresID.map(setoresMapper::map).orElse(null);
   }
 
-  public SetoresDTO atualizarSetor(Long id, SetoresDTO setoresDTO) {
+  public SetoresDTO alterarSetor(Long id, SetoresDTO setoresDTO) {
     Optional<SetoresModel> setoresID = setoresRepository.findById(id);
     if (setoresID.isPresent()) {
-      SetoresModel setoresModel = setoresMapper.map(setoresDTO);
-      setoresModel.setId(id);
+      SetoresModel setoresModel = setoresID.get();
+      if (setoresDTO.getSetor() != null) {
+        setoresModel.setSetor(setoresDTO.getSetor());
+      }
+      if (setoresDTO.getDescricao() != null) {
+        setoresModel.setDescricao(setoresDTO.getDescricao());
+      }
+      if (setoresDTO.getFuncionarios() != null) {
+        setoresModel.setFuncionarios(setoresDTO.getFuncionarios());
+      }
       SetoresModel setoresSalvo = setoresRepository.save(setoresModel);
       return setoresMapper.map(setoresSalvo);
     }
@@ -45,12 +59,6 @@ public class SetoresService {
 
   public void deletarSetorID(Long id) {
     setoresRepository.deleteById(id);
-  }
-
-  public List<SetoresDTO> listarSetor() {
-    List<SetoresModel> setores = setoresRepository.findAll();
-    return setores.stream().map(setoresMapper::map).toList();
-
   }
 
 }
