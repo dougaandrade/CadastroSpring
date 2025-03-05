@@ -15,7 +15,6 @@ import com.example.dev.Funcionarios.DTO.FuncionariosDTO;
 import com.example.dev.Funcionarios.Service.FuncionariosService;
 
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.val;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

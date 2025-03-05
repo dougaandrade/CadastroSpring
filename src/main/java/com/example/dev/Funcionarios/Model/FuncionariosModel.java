@@ -1,8 +1,6 @@
 package com.example.dev.Funcionarios.Model;
 
 import java.time.LocalDate;
-import java.util.UUID;
-
 import com.example.dev.Setores.Model.SetoresModel;
 
 import jakarta.persistence.*;
@@ -42,10 +40,5 @@ public class FuncionariosModel {
     @ManyToOne
     @JoinColumn(name = "setor_id")
     private SetoresModel setor;
-
-    @PrePersist
-    public void gerarCodigo() {
-        this.codFuncionario = (long) (Math.abs(UUID.randomUUID().hashCode() % 9000) + 1000); // Garante 4 dígitos
-    }
 
 }
