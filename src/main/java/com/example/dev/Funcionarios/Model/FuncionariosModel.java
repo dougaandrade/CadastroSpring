@@ -25,14 +25,15 @@ public class FuncionariosModel {
     @Column(name = "nome")
     private String nome;
 
+    @Embedded
     @Column(unique = true)
-    private String email;
+    private Email email;
 
     @Column(name = "idade")
     private int idade;
-
+    @Embedded
     @Column(name = "cpf")
-    private String cpf;
+    private Cpf cpf;
 
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;

@@ -31,6 +31,7 @@ public class SetoresController {
   public ResponseEntity<String> criarSetor(@RequestBody SetoresDTO setores) {
     setoresService.criarSetor(setores);
     return ResponseEntity.status(201).body("Setor criado com sucesso");
+
   }
 
   // GET -- Mandar uma requisao para mostrar as setores
