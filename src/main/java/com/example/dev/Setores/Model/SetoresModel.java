@@ -3,6 +3,7 @@ package com.example.dev.Setores.Model;
 import java.util.List;
 
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
+import com.example.dev.Setores.Exceptions.IdCriadoException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -23,9 +24,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SetoresModel {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+    @Id
     @Column(name = "id")
     private Long id;
     @Column(name = "setor")
@@ -36,5 +37,16 @@ public class SetoresModel {
     @OneToMany(mappedBy = "setor")
     @JsonIgnore // Ignorar o relacionamento com os funcionários
     private List<FuncionariosModel> funcionarios;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        if (id == null || id <= 0) {
+            throw new IdCriadoException("O ID é obrigatório e deve ser maior que zero.");
+        }
+        this.id = id;
+    }
 
 }

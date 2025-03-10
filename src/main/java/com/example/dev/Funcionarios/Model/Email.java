@@ -3,7 +3,7 @@ package com.example.dev.Funcionarios.Model;
 import jakarta.persistence.Embeddable;
 import java.util.Objects;
 
-import com.example.dev.Funcionarios.Exceptions.FuncionarioCriadoException;
+import com.example.dev.Funcionarios.Exceptions.FuncionarioException;
 
 @Embeddable
 public class Email {
@@ -19,7 +19,7 @@ public class Email {
 
   private void validarEmail(String endereco) {
     if (endereco == null || !endereco.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-      throw new FuncionarioCriadoException("E-mail inválido!, por favor insira um e-mail valido", "e-mail");
+      throw new FuncionarioException("E-mail inválido!", "E-mail");
     }
   }
 

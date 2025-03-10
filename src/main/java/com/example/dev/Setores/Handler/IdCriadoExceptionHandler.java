@@ -1,4 +1,4 @@
-package com.example.dev.Funcionarios.Handler;
+package com.example.dev.Setores.Handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -6,16 +6,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.example.dev.Funcionarios.Exceptions.FuncionarioCriadoException;
+import com.example.dev.Setores.Exceptions.IdCriadoException;
 
 @ControllerAdvice
-public class FuncionarioCriadoExceptionHandler {
+public class IdCriadoExceptionHandler {
 
   @ResponseBody
-  @ExceptionHandler(FuncionarioCriadoException.class)
+  @ExceptionHandler(IdCriadoException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public String handleFuncionarioCriadoException(FuncionarioCriadoException ex) {
+  public String handleSetorCriadoException(IdCriadoException ex) {
     return ex.getMessage();
   }
-
 }

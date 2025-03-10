@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.dev.Funcionarios.DTO.FuncionariosDTO;
+import com.example.dev.Funcionarios.Exceptions.FuncionarioException;
 import com.example.dev.Funcionarios.Mapper.FuncionariosMapper;
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.example.dev.Funcionarios.Repository.FuncionariosRepository;
@@ -33,6 +34,10 @@ public class FuncionariosService {
 
   public FuncionariosDTO criarNovoFuncionario(FuncionariosDTO funcionarioDTO) {
     FuncionariosModel funcionario = funcionariosMapper.map(funcionarioDTO);
+    Optional<FuncionariosModel> setor = funcionariosRepository.findById(funcionario.getSetor().getId());
+    if (setor.isEmpty()) {
+      throw new FuncionarioException("Setor não encontrado!", "Setor");
+    }
     funcionario = funcionariosRepository.save(funcionario);
     return funcionariosMapper.map(funcionario);
   }
