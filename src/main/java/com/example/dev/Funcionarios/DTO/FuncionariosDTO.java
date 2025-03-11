@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 import com.example.dev.Funcionarios.Model.Cpf;
 import com.example.dev.Funcionarios.Model.Email;
+import com.example.dev.Funcionarios.Model.Nome;
 import com.example.dev.Setores.Model.SetoresModel;
 
 import jakarta.validation.constraints.Min;
@@ -25,7 +26,7 @@ public class FuncionariosDTO {
 
   @NotNull(message = "Nome não pode ser nulo")
   @Size(min = 1)
-  private String nome;
+  private Nome nome;
 
   private Email email;
 

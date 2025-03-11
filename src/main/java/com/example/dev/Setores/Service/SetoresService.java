@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.dev.Setores.DTO.SetoresDTO;
+import com.example.dev.Setores.Exceptions.SetoresException;
 import com.example.dev.Setores.Mapper.SetoresMapper;
+import com.example.dev.Setores.Model.Setor;
 import com.example.dev.Setores.Model.SetoresModel;
 import com.example.dev.Setores.Repository.SetoresRepository;
 
@@ -19,10 +21,15 @@ public class SetoresService {
   public SetoresService(SetoresMapper setoresMapper, SetoresRepository setoresRepository) {
     this.setoresMapper = setoresMapper;
     this.setoresRepository = setoresRepository;
+
   }
 
   public SetoresDTO criarSetor(SetoresDTO setoresDTO) {
     SetoresModel setores = setoresMapper.map(setoresDTO);
+    if (setoresRepository.findBySetor(setores.getSetor()).isPresent()) {
+      throw new SetoresException("Setor já cadastrado ou vazio!");
+
+    }
     setores = setoresRepository.save(setores);
     return setoresMapper.map(setores);
   }

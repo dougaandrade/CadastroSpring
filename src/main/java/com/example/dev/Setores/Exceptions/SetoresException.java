@@ -3,7 +3,7 @@ package com.example.dev.Setores.Exceptions;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class IdCriadoException extends RuntimeException {
+public class SetoresException extends RuntimeException {
 
   private final String message;
 
@@ -11,4 +11,5 @@ public class IdCriadoException extends RuntimeException {
   public String getMessage() {
     return message;
   }
+
 }

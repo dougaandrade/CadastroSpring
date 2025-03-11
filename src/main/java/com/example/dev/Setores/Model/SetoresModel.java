@@ -3,10 +3,10 @@ package com.example.dev.Setores.Model;
 import java.util.List;
 
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
-import com.example.dev.Setores.Exceptions.IdCriadoException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,10 +26,11 @@ public class SetoresModel {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id", unique = true)
     private Long id;
-    @Column(name = "setor")
-    private String setor;
+    @Embedded
+    @Column(name = "setor", unique = true)
+    private Setor setor;
     @Column(name = "descricao")
     private String descricao;
 

@@ -3,6 +3,7 @@ package com.example.dev.Setores.DTO;
 import java.util.List;
 
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
+import com.example.dev.Setores.Model.Setor;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -19,7 +20,7 @@ public class SetoresDTO {
 
   @NotNull(message = "Nome não pode ser nulo")
   @Size(min = 1, message = "Nome não pode ser vazio")
-  private String setor;
+  private Setor setor;
 
   @NotNull(message = "Descrição não pode ser nula")
   @Size(min = 1, message = "Descrição não pode ser vazia")

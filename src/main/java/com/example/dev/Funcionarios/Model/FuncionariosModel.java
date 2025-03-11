@@ -22,8 +22,9 @@ public class FuncionariosModel {
     @Column(name = "cod_funcionario")
     private Long codFuncionario;
 
-    @Column(name = "nome")
-    private String nome;
+    @Embedded
+    @Column(name = "nome", unique = true)
+    private Nome nome;
 
     @Embedded
     @Column(unique = true)
@@ -32,7 +33,7 @@ public class FuncionariosModel {
     @Column(name = "idade")
     private int idade;
     @Embedded
-    @Column(name = "cpf")
+    @Column(name = "cpf", unique = true)
     private Cpf cpf;
 
     @Column(name = "data_nascimento")

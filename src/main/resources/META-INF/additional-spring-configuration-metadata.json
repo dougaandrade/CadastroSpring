@@ -9,6 +9,11 @@
       "name": "spring.datasource.driver",
       "type": "java.lang.String",
       "description": "A description for 'spring.datasource.driver'"
+    },
+    {
+      "name": "PostgreSQLDialect",
+      "type": "java.lang.String",
+      "description": "A description for 'PostgreSQLDialect'"
     }
   ]
 }
