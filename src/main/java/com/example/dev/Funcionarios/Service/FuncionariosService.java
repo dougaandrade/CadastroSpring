@@ -34,7 +34,8 @@ public class FuncionariosService {
 
   public FuncionariosDTO criarNovoFuncionario(FuncionariosDTO funcionarioDTO) {
     FuncionariosModel funcionario = funcionariosMapper.map(funcionarioDTO);
-    Optional<FuncionariosModel> setor = funcionariosRepository.findById(funcionario.getSetor().getId());
+    Optional<FuncionariosModel> setor = funcionariosRepository.findById(funcionario.getSetor()
+        .getId());
     if (setor.isEmpty()) {
       throw new FuncionarioException("Setor não encontrado!", "Setor");
     }

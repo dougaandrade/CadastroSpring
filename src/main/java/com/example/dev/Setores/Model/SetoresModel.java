@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 public class SetoresModel {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Id
     @Column(name = "id")
     private Long id;
@@ -37,16 +36,5 @@ public class SetoresModel {
     @OneToMany(mappedBy = "setor")
     @JsonIgnore // Ignorar o relacionamento com os funcionários
     private List<FuncionariosModel> funcionarios;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        if (id == null || id <= 0) {
-            throw new IdCriadoException("O ID é obrigatório e deve ser maior que zero.");
-        }
-        this.id = id;
-    }
 
 }
