@@ -28,9 +28,11 @@ public class SetoresModel {
     @Id
     @Column(name = "id", unique = true)
     private Long id;
+
     @Embedded
     @Column(name = "setor", unique = true)
     private Setor setor;
+
     @Column(name = "descricao")
     private String descricao;
 

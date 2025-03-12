@@ -32,6 +32,7 @@ public class FuncionariosModel {
 
     @Column(name = "idade")
     private int idade;
+
     @Embedded
     @Column(name = "cpf", unique = true)
     private Cpf cpf;

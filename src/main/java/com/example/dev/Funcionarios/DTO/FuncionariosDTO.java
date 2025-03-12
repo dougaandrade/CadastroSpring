@@ -11,9 +11,10 @@ import com.example.dev.Funcionarios.Model.Nome;
 import com.example.dev.Setores.Model.SetoresModel;
 
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
 @Data
@@ -21,22 +22,38 @@ import jakarta.validation.constraints.Size;
 @AllArgsConstructor
 public class FuncionariosDTO {
 
-  @PositiveOrZero(message = "Código do funcionário não pode ser negativo")
   private Long codFuncionario;
 
-  @NotNull(message = "Nome não pode ser nulo")
+  @NotNull
+  @NotBlank
+  @NotEmpty
   @Size(min = 1)
   private Nome nome;
 
+  @NotNull
+  @NotBlank
+  @NotEmpty
   private Email email;
 
+  @NotNull
+  @NotBlank
+  @NotEmpty
   @Min(value = 18)
   private int idade;
 
+  @NotNull
+  @NotBlank
+  @NotEmpty
   private Cpf cpf;
 
   @Past
+  @NotNull
+  @NotBlank
+  @NotEmpty
   private LocalDate dataNascimento;
 
+  @NotNull
+  @NotBlank
+  @NotEmpty
   private SetoresModel setor;
 }

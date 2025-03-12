@@ -22,11 +22,9 @@ public class Nome {
   }
 
   public void ValidarNome(String nome) {
-    if (nome.isEmpty() ||
-        nome.isBlank() ||
-        nome.matches("\\s+") ||
+    if (nome.matches("\\s+") ||
         !nome.matches("^[A-Za-z]+$")) {
-      throw new FuncionarioException("Primeiro nome inválido!", "Primeiro nome");
+      throw new FuncionarioException("Nome inválido!", "O nome deve conter apenas letras.");
     }
   }
 }

@@ -18,7 +18,7 @@ public class Email {
   }
 
   private void validarEmail(String endereco) {
-    if (endereco == null || !endereco.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+    if (!endereco.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
       throw new FuncionarioException("E-mail inválido!", "E-mail");
     }
   }

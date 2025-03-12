@@ -3,7 +3,6 @@ package com.example.dev.Setores.Model;
 import com.example.dev.Setores.Exceptions.SetoresException;
 
 import jakarta.persistence.Embeddable;
-import lombok.val;
 
 @Embeddable
 public class Setor {
@@ -23,9 +22,7 @@ public class Setor {
   }
 
   public String ValidarSetor(String setor) {
-    if (setor.isEmpty() ||
-        setor.isBlank() ||
-        setor.matches("\\s+") ||
+    if (setor.matches("\\s+") ||
         !setor.matches("^[A-Za-zÀ-ú\\s]+$")) {
       throw new SetoresException("Setor inválido!");
     }
