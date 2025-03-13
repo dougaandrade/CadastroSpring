@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.dev.Exceptions.ValidException;
 import com.example.dev.Funcionarios.DTO.FuncionariosDTO;
-import com.example.dev.Funcionarios.Exceptions.FuncionarioException;
 import com.example.dev.Funcionarios.Mapper.FuncionariosMapper;
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.example.dev.Funcionarios.Repository.FuncionariosRepository;
@@ -31,16 +31,16 @@ public class FuncionariosService {
 
   public Optional<FuncionariosDTO> funcionariosByCod(Long codFuncionario) {
     if (!funcionariosRepository.existsById(codFuncionario)) {
-      throw new FuncionarioException("Funcionario não encontrado", null);
+      throw new ValidException("Funcionario não encontrado");
     }
     return funcionariosRepository.findByCodFuncionario(codFuncionario)
         .map(funcionariosMapper::map);
   }
 
   public FuncionariosDTO criarNovoFuncionario(FuncionariosDTO funcionarioDTO) {
-    if (funcionariosRepository.findByCpf(funcionarioDTO.getCpf()).isPresent()) {
-      throw new FuncionarioException("Funcionário já cadastrado com esse CPF!", "CPF");
-    }
+    funcionariosRepository.findByCpf(funcionarioDTO.getCpf()).ifPresent(funcionario -> {
+      throw new ValidException("Funcionário já cadastrado com esse CPF!");
+    });
     FuncionariosModel funcionario = funcionariosMapper.map(funcionarioDTO);
     funcionario = funcionariosRepository.save(funcionario);
     return funcionariosMapper.map(funcionario);
@@ -48,7 +48,7 @@ public class FuncionariosService {
 
   public void deletarFuncionarioCod(Long codFuncionario) {
     if (!funcionariosRepository.existsById(codFuncionario)) {
-      throw new FuncionarioException("Funcionário não encontrado para exclusão", "COD");
+      throw new ValidException("Funcionário não encontrado para exclusão");
     }
     funcionariosRepository.deleteById(codFuncionario);
   }
@@ -59,7 +59,7 @@ public class FuncionariosService {
           atualizarDadosFuncionario(funcionario, funcionarioDTO);
           return funcionariosMapper.map(funcionariosRepository.save(funcionario));
         })
-        .orElseThrow(() -> new FuncionarioException("Funcionário não encontrado", "COD"));
+        .orElseThrow(() -> new ValidException("Funcionário não encontrado"));
   }
 
   private void atualizarDadosFuncionario(FuncionariosModel funcionario, FuncionariosDTO dto) {

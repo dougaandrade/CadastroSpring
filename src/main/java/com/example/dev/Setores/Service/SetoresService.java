@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.dev.Exceptions.ValidException;
 import com.example.dev.Setores.DTO.SetoresDTO;
-import com.example.dev.Setores.Exceptions.SetoresException;
 import com.example.dev.Setores.Mapper.SetoresMapper;
 import com.example.dev.Setores.Model.SetoresModel;
 import com.example.dev.Setores.Repository.SetoresRepository;
@@ -25,7 +25,7 @@ public class SetoresService {
   public SetoresDTO criarSetor(SetoresDTO setoresDTO) {
     setoresRepository.findBySetor(setoresDTO.getSetor())
         .ifPresent(setor -> {
-          throw new SetoresException("Setor já cadastrado!");
+          throw new ValidException("Setor já cadastrado!");
         });
 
     SetoresModel setores = setoresMapper.map(setoresDTO);
@@ -51,7 +51,7 @@ public class SetoresService {
           atualizarSetor(setor, setoresDTO);
           return setoresMapper.map(setoresRepository.save(setor));
         })
-        .orElseThrow(() -> new SetoresException("Setor não encontrado"));
+        .orElseThrow(() -> new ValidException("Setor não encontrado"));
   }
 
   private void atualizarSetor(SetoresModel setor, SetoresDTO setoresDTO) {
@@ -62,7 +62,7 @@ public class SetoresService {
 
   public void deletarSetorID(Long id) {
     if (!setoresRepository.existsById(id)) {
-      throw new SetoresException("Setor não encontrado para exclusão");
+      throw new ValidException("Setor não encontrado para exclusão");
     }
     setoresRepository.deleteById(id);
   }

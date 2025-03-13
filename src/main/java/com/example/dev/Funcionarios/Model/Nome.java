@@ -1,6 +1,6 @@
 package com.example.dev.Funcionarios.Model;
 
-import com.example.dev.Funcionarios.Exceptions.FuncionarioException;
+import com.example.dev.Exceptions.ValidException;
 
 import jakarta.persistence.Embeddable;
 
@@ -24,7 +24,7 @@ public class Nome {
   public void ValidarNome(String nome) {
     if (nome.matches("\\s+") ||
         !nome.matches("^[A-Za-z]+$")) {
-      throw new FuncionarioException("Nome inválido!", "O nome deve conter apenas letras.");
+      throw new ValidException("Nome inválido!");
     }
   }
 }

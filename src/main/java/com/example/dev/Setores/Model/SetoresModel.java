@@ -22,11 +22,9 @@ public class SetoresModel {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "setor")
     @Embedded
     private Setor setor;
 
-    @Column(name = "descricao")
     @Embedded
     private Descricao descricao;
 

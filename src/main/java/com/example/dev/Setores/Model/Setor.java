@@ -1,6 +1,6 @@
 package com.example.dev.Setores.Model;
 
-import com.example.dev.Setores.Exceptions.SetoresException;
+import com.example.dev.Exceptions.ValidException;
 
 import jakarta.persistence.Embeddable;
 
@@ -24,7 +24,7 @@ public class Setor {
   public String ValidarSetor(String setor) {
     if (setor.matches("\\s+") ||
         !setor.matches("^[A-Za-zÀ-ú\\s]+$")) {
-      throw new SetoresException("Setor inválido!");
+      throw new ValidException("Setor inválido!");
     }
     return setor;
   }

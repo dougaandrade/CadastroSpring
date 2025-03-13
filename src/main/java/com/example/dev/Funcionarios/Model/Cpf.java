@@ -4,7 +4,7 @@ import jakarta.persistence.Embeddable;
 
 import java.util.Objects;
 
-import com.example.dev.Funcionarios.Exceptions.FuncionarioException;
+import com.example.dev.Exceptions.ValidException;
 
 @Embeddable
 public class Cpf {
@@ -19,8 +19,8 @@ public class Cpf {
   }
 
   private void validarCpf(String numero) {
-    if (numero == null || !numero.matches("\\d{11}")) {
-      throw new FuncionarioException("CPF inválido!", "O CPF deve conter 11 dígitos.");
+    if (!numero.matches("\\d{11}")) {
+      throw new ValidException("CPF inválido!, o CPF deve conter 11 dígitos.");
     }
   }
 
