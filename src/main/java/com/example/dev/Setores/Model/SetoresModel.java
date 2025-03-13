@@ -5,14 +5,7 @@ import java.util.List;
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,20 +17,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SetoresModel {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
+    @Column(name = "setor")
     @Embedded
-    @Column(name = "setor", unique = true)
     private Setor setor;
 
     @Column(name = "descricao")
-    private String descricao;
+    @Embedded
+    private Descricao descricao;
 
-    @OneToMany(mappedBy = "setor")
-    @JsonIgnore // Ignorar o relacionamento com os funcionários
+    @OneToMany(mappedBy = "setor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore // Ignorar o relacionamento com os funcionários na serialização
     private List<FuncionariosModel> funcionarios;
-
 }

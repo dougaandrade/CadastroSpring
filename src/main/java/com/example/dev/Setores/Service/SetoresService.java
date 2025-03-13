@@ -23,9 +23,10 @@ public class SetoresService {
   }
 
   public SetoresDTO criarSetor(SetoresDTO setoresDTO) {
-    if (setoresRepository.findBySetor(setoresDTO.getSetor()).isPresent()) {
-      throw new SetoresException("Setor já cadastrado!");
-    }
+    setoresRepository.findBySetor(setoresDTO.getSetor())
+        .ifPresent(setor -> {
+          throw new SetoresException("Setor já cadastrado!");
+        });
 
     SetoresModel setores = setoresMapper.map(setoresDTO);
     setores = setoresRepository.save(setores);

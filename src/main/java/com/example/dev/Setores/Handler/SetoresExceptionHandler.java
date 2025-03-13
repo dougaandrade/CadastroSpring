@@ -1,18 +1,22 @@
 package com.example.dev.Setores.Handler;
 
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.example.dev.Setores.Exceptions.SetoresException;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class SetoresExceptionHandler {
 
-  @ResponseBody
   @ExceptionHandler(SetoresException.class)
-  public String handleSetorException(SetoresException ex) {
-    return ex.getMessage();
+  public ResponseEntity<String> handleSetoresException(SetoresException ex) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
   }
 
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<String> handleGenericException(Exception ex) {
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body("Campos do Setor inválido!");} 
 }

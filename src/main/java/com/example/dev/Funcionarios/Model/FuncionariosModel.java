@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import com.example.dev.Setores.Model.SetoresModel;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,32 +19,35 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(exclude = "setor")
 public class FuncionariosModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "cod_funcionario")
     private Long codFuncionario;
 
+    @NotNull
     @Embedded
-    @Column(name = "nome", unique = true)
     private Nome nome;
 
+    @NotNull
     @Embedded
-    @Column(unique = true)
     private Email email;
 
-    @Column(name = "idade")
+    @NotNull
+    @Min(value = 18)
+    @Column(name = "idade", nullable = false)
     private int idade;
 
+    @NotNull
     @Embedded
-    @Column(name = "cpf", unique = true)
     private Cpf cpf;
 
-    @Column(name = "data_nascimento")
+    @Past
+    @NotNull
+    @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
     @ManyToOne
-    @JoinColumn(name = "setor_id")
+    @JoinColumn(name = "setor_id", nullable = false)
     private SetoresModel setor;
-
 }
