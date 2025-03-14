@@ -3,9 +3,6 @@ package com.example.dev.Setores.DTO;
 import java.util.List;
 
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
-import com.example.dev.Setores.Model.Descricao;
-import com.example.dev.Setores.Model.Setor;
-
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotEmpty;
@@ -23,11 +20,11 @@ public class SetoresDTO {
   private Long id;
 
   @NotNull(message = "O setor é obrigatório")
-  private Setor setor;
+  private String setor;
 
   @NotNull(message = "A descrição do setor é obrigatória")
   @Size(min = 5, max = 255, message = "A descrição deve ter entre 5 e 255 caracteres")
-  private Descricao descricao;
+  private String descricao;
 
   @NotEmpty(message = "O setor deve conter pelo menos um funcionário")
   private List<FuncionariosModel> funcionarios;
