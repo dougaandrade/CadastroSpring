@@ -2,11 +2,12 @@ package com.example.dev.Setores.Model;
 
 import java.util.List;
 
+import com.example.dev.Enum.StatusSetor;
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,7 @@ public class SetoresModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id", unique = true)
     private Long id;
 
     @NotNull(message = "O setor é obrigatório")
@@ -33,8 +34,13 @@ public class SetoresModel {
     @Size(min = 5, max = 255, message = "A descrição deve ter entre 5 e 255 caracteres")
     private String descricao;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    @NotNull(message = "O status do setor é obrigatório")
+    private StatusSetor status;
+
     @OneToMany(mappedBy = "setor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @NotEmpty(message = "O setor deve conter pelo menos um funcionário")
     @JsonIgnore // Ignorar o relacionamento com os funcionários na serialização
     private List<FuncionariosModel> funcionarios;
+
 }

@@ -14,6 +14,7 @@ public class SetoresMapper {
     setoresDTO.setSetor(setores.getSetor());
     setoresDTO.setDescricao(setores.getDescricao());
     setoresDTO.setFuncionarios(setores.getFuncionarios());
+    setoresDTO.setStatus(setores.getStatus());
 
     return setoresDTO;
 
@@ -25,7 +26,7 @@ public class SetoresMapper {
     setoresModel.setSetor(setoresDTO.getSetor());
     setoresModel.setDescricao(setoresDTO.getDescricao());
     setoresModel.setFuncionarios(setoresDTO.getFuncionarios());
-
+    setoresModel.setStatus(setoresDTO.getStatus());
     return setoresModel;
   }
 
