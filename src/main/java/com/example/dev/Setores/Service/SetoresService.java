@@ -58,6 +58,7 @@ public class SetoresService {
     Optional.ofNullable(setoresDTO.getSetor()).ifPresent(setor::setSetor);
     Optional.ofNullable(setoresDTO.getDescricao()).ifPresent(setor::setDescricao);
     Optional.ofNullable(setoresDTO.getFuncionarios()).ifPresent(setor::setFuncionarios);
+    Optional.ofNullable(setoresDTO.getStatus()).ifPresent(setor::setStatus);
   }
 
   public void deletarSetorID(Long id) {

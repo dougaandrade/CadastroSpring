@@ -25,7 +25,7 @@ public enum StatusSetor {
 
   public static StatusSetor toEnum(Integer cod) {
     if (cod == null) {
-      return null;
+      throw new ValidException("Id inválido: " + cod);
     }
     for (StatusSetor x : StatusSetor.values()) {
       if (cod.equals(x.getCod())) {
