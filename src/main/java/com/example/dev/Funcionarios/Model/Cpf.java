@@ -8,24 +8,31 @@ import com.example.dev.Exceptions.ValidException;
 
 @Embeddable
 public class Cpf {
-  private String numero;
+  private String cpf_user;
 
   protected Cpf() {
   } // Construtor padrão para JPA
 
-  public Cpf(String numero) {
-    validarCpf(numero);
-    this.numero = numero;
+  public Cpf(String cpf_user) {
+
+    validarCpf(cpf_user);
+
+    this.cpf_user = cpf_user;
+
   }
 
-  private void validarCpf(String numero) {
-    if (!numero.matches("\\d{11}")) {
+  private void validarCpf(String cpf_user) {
+
+    if (!cpf_user.matches("\\d{11}")) {
+
       throw new ValidException("CPF inválido!, o CPF deve conter 11 dígitos.");
     }
   }
 
-  public String getNumero() {
-    return numero;
+  public String getcpf_user() {
+
+    return cpf_user;
+
   }
 
   @Override
@@ -35,11 +42,12 @@ public class Cpf {
     if (o == null || getClass() != o.getClass())
       return false;
     Cpf cpf = (Cpf) o;
-    return Objects.equals(numero, cpf.numero);
+    return Objects.equals(cpf_user, cpf.cpf_user);
+
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numero);
+    return Objects.hash(cpf_user);
   }
 }
