@@ -12,6 +12,7 @@ Este projeto é um sistema de cadastro e gerenciamento de pessoas e setores, des
 - ✅ **Swagger** – Para documentação da API.
 - ✅ **Postman** – Para testes e desenvolvimento.
 - ✅ **DBeaver** – Cliente SQL para gerenciar o banco de dados.
+- ✅ **Scalar** - Para testes da API e documentação.
 
 ## 🔥 Funcionalidades
 
@@ -30,7 +31,9 @@ Antes de começar, você precisará ter instalado em sua máquina:
 - ✅ **Maven**
 - ✅ **Git**
 - ✅ **Docker e Docker Compose**
+- ✅ **Postman**
 - ✅ **DBeaver** (opcional, para acessar o banco de dados)
+- ✅ **Scalar**
 
 ### 🚀 Clonando o Repositório
 
