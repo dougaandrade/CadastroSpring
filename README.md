@@ -13,6 +13,7 @@ Este projeto é um sistema de cadastro e gerenciamento de pessoas e setores, des
 - ✅ **Postman** – Para testes e desenvolvimento.
 - ✅ **DBeaver** – Cliente SQL para gerenciar o banco de dados.
 - ✅ **Scalar** - Para testes da API e documentação.
+- ✅ **Spring Test** - Para testes unitários.
 
 ## 🔥 Funcionalidades
 
