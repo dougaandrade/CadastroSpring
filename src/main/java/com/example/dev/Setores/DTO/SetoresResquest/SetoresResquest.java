@@ -1,4 +1,4 @@
-package com.example.dev.Setores.DTO;
+package com.example.dev.Setores.DTO.SetoresResquest;
 
 import java.util.List;
 
@@ -9,13 +9,17 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SetoresDTO {
+@Getter
+@Setter
+public class SetoresResquest {
 
   private Long id;
 
@@ -31,6 +35,7 @@ public class SetoresDTO {
   @NotNull(message = "{NotNull.status}")
   private StatusSetor status;
 
+  @NotNull
   private List<FuncionariosModel> funcionarios;
 
 }

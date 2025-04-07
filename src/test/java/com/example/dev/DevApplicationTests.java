@@ -16,9 +16,12 @@ import com.example.dev.Enum.StatusSetor;
 import com.example.dev.Funcionarios.DTO.FuncionariosDTO;
 import com.example.dev.Funcionarios.Model.Cpf;
 import com.example.dev.Funcionarios.Service.FuncionariosService;
-import com.example.dev.Setores.DTO.SetoresDTO;
+import com.example.dev.Setores.DTO.SetoresResponse.SetoresResponse;
+import com.example.dev.Setores.DTO.SetoresResquest.SetoresResquest;
 import com.example.dev.Setores.Model.SetoresModel;
 import com.example.dev.Setores.Service.SetoresService;
+
+import jakarta.validation.Valid;
 
 @ExtendWith(MockitoExtension.class)
 class DevApplicationTests {
@@ -32,12 +35,12 @@ class DevApplicationTests {
 	@InjectMocks
 	private DevApplicationTests testInstance;
 
-	private SetoresDTO setores;
+	private @Valid SetoresResquest setores;
 	private FuncionariosDTO funcionarios;
 
 	@BeforeEach
 	void setUp() {
-		setores = new SetoresDTO();
+		setores = new SetoresResquest();
 		setores.setSetor("TI 8");
 		setores.setDescricao("Departamento de Tecnologia da Informação 8");
 		setores.setStatus(StatusSetor.ABERTO);
@@ -56,9 +59,14 @@ class DevApplicationTests {
 
 	@Test
 	void testSetor() {
-		when(setoresService.criarSetor(setores)).thenReturn(setores);
+		SetoresResponse mockResponse = new SetoresResponse();
+		mockResponse.setSetor("TI 8");
+		mockResponse.setDescricao("Departamento de Tecnologia da Informação 8");
+		mockResponse.setStatus(StatusSetor.ABERTO);
 
-		SetoresDTO resultado = setoresService.criarSetor(setores);
+		when(setoresService.criarSetor(setores)).thenReturn(mockResponse);
+
+		SetoresResponse resultado = setoresService.criarSetor(setores);
 
 		assertEquals("TI 8", resultado.getSetor());
 		assertEquals("Departamento de Tecnologia da Informação 8", resultado.getDescricao());

@@ -27,7 +27,6 @@ public class ValidExceptionHandler {
     String errors = ex.getBindingResult().getFieldErrors().stream()
         .map(error -> error.getDefaultMessage())
         .collect(Collectors.joining("\n"));
-
     return ResponseEntity.badRequest().body(errors);
   }
 

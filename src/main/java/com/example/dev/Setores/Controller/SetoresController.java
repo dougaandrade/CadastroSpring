@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dev.Setores.DTO.SetoresDTO;
+import com.example.dev.Setores.DTO.SetoresResponse.SetoresResponse;
+import com.example.dev.Setores.DTO.SetoresResquest.SetoresResquest;
 import com.example.dev.Setores.Service.SetoresService;
 
 import jakarta.validation.Valid;
@@ -31,7 +32,7 @@ public class SetoresController {
   // Post -- Mandar uma requisao para criar as missoes
 
   @PostMapping("/criar")
-  public ResponseEntity<String> criarSetor(@Valid @RequestBody SetoresDTO setores) {
+  public ResponseEntity<String> criarSetor(@Valid @RequestBody SetoresResquest setores) {
     setoresService.criarSetor(setores);
     return ResponseEntity.status(201).body("Setor criado com sucesso");
 
@@ -40,24 +41,24 @@ public class SetoresController {
   // GET -- Mandar uma requisao para mostrar as setores
 
   @GetMapping("/listar")
-  public ResponseEntity<List<SetoresDTO>> listarSetores() {
-    List<SetoresDTO> setores = setoresService.listarSetor();
+  public ResponseEntity<List<SetoresResponse>> listarSetores() {
+    List<SetoresResponse> setores = setoresService.listarSetor();
     return ResponseEntity.ok(setores);
   }
 
   // GET -- Mandar uma requisao para mostrar as missoes
 
   @GetMapping("/obter/{id}")
-  public ResponseEntity<Optional<SetoresDTO>> setoresPorId(@PathVariable Long id) {
-    Optional<SetoresDTO> setoresDTO = setoresService.obterPorId(id);
-    return ResponseEntity.ok(setoresDTO);
+  public ResponseEntity<Optional<SetoresResponse>> setoresPorId(@PathVariable Long id) {
+    Optional<SetoresResponse> setores = setoresService.obterPorId(id);
+    return ResponseEntity.ok(setores);
   }
 
   // PUT -- Mandar uma requisao para alterar as missoes
 
   @PatchMapping("/alterar/{id}")
-  public ResponseEntity<String> atualizarSetor(@Valid @PathVariable Long id, @RequestBody SetoresDTO SetoresDTO) {
-    setoresService.alterarSetor(id, SetoresDTO);
+  public ResponseEntity<String> atualizarSetor(@Valid @PathVariable Long id, @RequestBody SetoresResquest Setores) {
+    setoresService.alterarSetor(id, Setores);
     return ResponseEntity.ok().body("Setor com ID " + id + " atualizada com sucesso");
   }
 

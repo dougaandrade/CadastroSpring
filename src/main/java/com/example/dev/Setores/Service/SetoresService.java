@@ -6,10 +6,13 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.dev.Exceptions.ValidException;
-import com.example.dev.Setores.DTO.SetoresDTO;
+import com.example.dev.Setores.DTO.SetoresResponse.SetoresResponse;
+import com.example.dev.Setores.DTO.SetoresResquest.SetoresResquest;
 import com.example.dev.Setores.Mapper.SetoresMapper;
 import com.example.dev.Setores.Model.SetoresModel;
 import com.example.dev.Setores.Repository.SetoresRepository;
+
+import jakarta.validation.Valid;
 
 @Service
 public class SetoresService {
@@ -22,43 +25,43 @@ public class SetoresService {
     this.setoresRepository = setoresRepository;
   }
 
-  public SetoresDTO criarSetor(SetoresDTO setoresDTO) {
-    setoresRepository.findBySetor(setoresDTO.getSetor())
+  public SetoresResponse criarSetor(@Valid SetoresResquest setoresRequest) {
+    setoresRepository.findBySetor(setoresRequest.getSetor())
         .ifPresent(setor -> {
           throw new ValidException("Setor já cadastrado!");
         });
 
-    SetoresModel setores = setoresMapper.map(setoresDTO);
-    setores = setoresRepository.save(setores);
-    return setoresMapper.map(setores);
+    SetoresModel setor = setoresMapper.map(setoresRequest);
+    setor = setoresRepository.save(setor);
+    return setoresMapper.map(setor);
   }
 
-  public List<SetoresDTO> listarSetor() {
+  public List<SetoresResponse> listarSetor() {
     return setoresRepository.findAll()
         .stream()
         .map(setoresMapper::map)
         .toList();
   }
 
-  public Optional<SetoresDTO> obterPorId(Long id) {
+  public Optional<SetoresResponse> obterPorId(Long id) {
     return setoresRepository.findById(id)
         .map(setoresMapper::map);
   }
 
-  public SetoresDTO alterarSetor(Long id, SetoresDTO setoresDTO) {
+  public SetoresModel alterarSetor(Long id, SetoresResquest setoresRequest) {
     return setoresRepository.findById(id)
         .map(setor -> {
-          atualizarSetor(setor, setoresDTO);
-          return setoresMapper.map(setoresRepository.save(setor));
+          atualizarSetor(setor, setoresRequest);
+          return setoresRepository.save(setor);
         })
         .orElseThrow(() -> new ValidException("Setor não encontrado"));
   }
 
-  private void atualizarSetor(SetoresModel setor, SetoresDTO setoresDTO) {
-    Optional.ofNullable(setoresDTO.getSetor()).ifPresent(setor::setSetor);
-    Optional.ofNullable(setoresDTO.getDescricao()).ifPresent(setor::setDescricao);
-    Optional.ofNullable(setoresDTO.getFuncionarios()).ifPresent(setor::setFuncionarios);
-    Optional.ofNullable(setoresDTO.getStatus()).ifPresent(setor::setStatus);
+  private void atualizarSetor(SetoresModel setor, SetoresResquest setoresRequest) {
+    Optional.ofNullable(setoresRequest.getSetor()).ifPresent(setor::setSetor);
+    Optional.ofNullable(setoresRequest.getDescricao()).ifPresent(setor::setDescricao);
+    Optional.ofNullable(setoresRequest.getFuncionarios()).ifPresent(setor::setFuncionarios);
+    Optional.ofNullable(setoresRequest.getStatus()).ifPresent(setor::setStatus);
   }
 
   public void deletarSetorID(Long id) {
