@@ -18,7 +18,7 @@ import com.example.dev.Funcionarios.DTO.FuncionariosResponse.FuncionariosRespons
 import com.example.dev.Funcionarios.Model.Cpf;
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.example.dev.Funcionarios.Service.FuncionariosService;
-import com.example.dev.Setores.DTO.SetoresResquest.SetoresResquest;
+import com.example.dev.Setores.DTO.SetoresResquest.SetoresRequest;
 import com.example.dev.Setores.Model.SetoresModel;
 import com.example.dev.Setores.Service.SetoresService;
 
@@ -36,12 +36,12 @@ class DevApplicationTests {
 	@InjectMocks
 	private DevApplicationTests testInstance;
 
-	private @Valid SetoresResquest setoresRequest;
+	private @Valid SetoresRequest setoresRequest;
 	private @Valid FuncionariosRequest funcionariosRequest;
 
 	@BeforeEach
 	void setUp() {
-		setoresRequest = new SetoresResquest();
+		setoresRequest = new SetoresRequest();
 		setoresRequest.setSetor("TI 8");
 		setoresRequest.setDescricao("Departamento de Tecnologia da Informação 8");
 		setoresRequest.setStatus(StatusSetor.ABERTO);

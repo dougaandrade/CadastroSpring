@@ -3,14 +3,14 @@ package com.example.dev.Setores.Mapper;
 import org.springframework.stereotype.Component;
 
 import com.example.dev.Setores.DTO.SetoresResponse.SetoresResponse;
-import com.example.dev.Setores.DTO.SetoresResquest.SetoresResquest;
+import com.example.dev.Setores.DTO.SetoresResquest.SetoresRequest;
 import com.example.dev.Setores.Model.SetoresModel;
 
 @Component
 public class SetoresMapper {
 
   // Request -> Model
-  public SetoresModel map(SetoresResquest request) {
+  public SetoresModel map(SetoresRequest request) {
 
     return SetoresModel.builder()
         .id(request.getId())

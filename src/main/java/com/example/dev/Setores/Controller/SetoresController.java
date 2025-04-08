@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dev.Setores.DTO.SetoresResponse.SetoresResponse;
-import com.example.dev.Setores.DTO.SetoresResquest.SetoresResquest;
+import com.example.dev.Setores.DTO.SetoresResquest.SetoresRequest;
 import com.example.dev.Setores.Service.SetoresService;
 
 import jakarta.validation.Valid;
@@ -32,7 +32,7 @@ public class SetoresController {
   // Post -- Mandar uma requisao para criar as missoes
 
   @PostMapping("/criar")
-  public ResponseEntity<String> criarSetor(@Valid @RequestBody SetoresResquest setores) {
+  public ResponseEntity<String> criarSetor(@RequestBody SetoresRequest setores) {
     setoresService.criarSetor(setores);
     return ResponseEntity.status(201).body("Setor criado com sucesso");
 
@@ -57,7 +57,7 @@ public class SetoresController {
   // PUT -- Mandar uma requisao para alterar as missoes
 
   @PatchMapping("/alterar/{id}")
-  public ResponseEntity<String> atualizarSetor(@Valid @PathVariable Long id, @RequestBody SetoresResquest Setores) {
+  public ResponseEntity<String> atualizarSetor(@Valid @PathVariable Long id, @RequestBody SetoresRequest Setores) {
     setoresService.alterarSetor(id, Setores);
     return ResponseEntity.ok().body("Setor com ID " + id + " atualizada com sucesso");
   }

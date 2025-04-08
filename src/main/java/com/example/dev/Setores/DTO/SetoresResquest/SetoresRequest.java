@@ -19,7 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SetoresResquest {
+public class SetoresRequest {
 
   private Long id;
 

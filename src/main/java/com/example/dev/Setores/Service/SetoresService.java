@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dev.Exceptions.ValidException;
 import com.example.dev.Setores.DTO.SetoresResponse.SetoresResponse;
-import com.example.dev.Setores.DTO.SetoresResquest.SetoresResquest;
+import com.example.dev.Setores.DTO.SetoresResquest.SetoresRequest;
 import com.example.dev.Setores.Mapper.SetoresMapper;
 import com.example.dev.Setores.Model.SetoresModel;
 import com.example.dev.Setores.Repository.SetoresRepository;
@@ -25,14 +25,15 @@ public class SetoresService {
     this.setoresRepository = setoresRepository;
   }
 
-  public SetoresModel criarSetor(@Valid SetoresResquest setoresRequest) {
+  public SetoresModel criarSetor(@Valid SetoresRequest setoresRequest) {
     setoresRepository.findBySetor(setoresRequest.getSetor())
         .ifPresent(setor -> {
           throw new ValidException("Setor já cadastrado!");
         });
 
-    SetoresModel novoSetor = new SetoresModel();
-    novoSetor.setSetor(setoresRequest.getSetor());
+    // SetoresModel novoSetor = new SetoresModel();
+
+    SetoresModel novoSetor = setoresMapper.map(setoresRequest);
 
     return setoresRepository.save(novoSetor);
   }
@@ -49,7 +50,7 @@ public class SetoresService {
         .map(setoresMapper::map);
   }
 
-  public SetoresModel alterarSetor(Long id, SetoresResquest setoresRequest) {
+  public SetoresModel alterarSetor(Long id, SetoresRequest setoresRequest) {
     return setoresRepository.findById(id)
         .map(setor -> {
           atualizarSetor(setor, setoresRequest);
@@ -58,7 +59,7 @@ public class SetoresService {
         .orElseThrow(() -> new ValidException("Setor não encontrado"));
   }
 
-  private void atualizarSetor(SetoresModel setor, SetoresResquest setoresRequest) {
+  private void atualizarSetor(SetoresModel setor, SetoresRequest setoresRequest) {
     Optional.ofNullable(setoresRequest.getSetor()).ifPresent(setor::setSetor);
     Optional.ofNullable(setoresRequest.getDescricao()).ifPresent(setor::setDescricao);
     Optional.ofNullable(setoresRequest.getFuncionarios()).ifPresent(setor::setFuncionarios);
