@@ -13,10 +13,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.example.dev.Enum.StatusSetor;
-import com.example.dev.Funcionarios.DTO.FuncionariosDTO;
+import com.example.dev.Funcionarios.DTO.FuncionariosRequest.FuncionariosRequest;
+import com.example.dev.Funcionarios.DTO.FuncionariosResponse.FuncionariosResponse;
 import com.example.dev.Funcionarios.Model.Cpf;
+import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.example.dev.Funcionarios.Service.FuncionariosService;
-import com.example.dev.Setores.DTO.SetoresResponse.SetoresResponse;
 import com.example.dev.Setores.DTO.SetoresResquest.SetoresResquest;
 import com.example.dev.Setores.Model.SetoresModel;
 import com.example.dev.Setores.Service.SetoresService;
@@ -35,38 +36,38 @@ class DevApplicationTests {
 	@InjectMocks
 	private DevApplicationTests testInstance;
 
-	private @Valid SetoresResquest setores;
-	private FuncionariosDTO funcionarios;
+	private @Valid SetoresResquest setoresRequest;
+	private @Valid FuncionariosRequest funcionariosRequest;
 
 	@BeforeEach
 	void setUp() {
-		setores = new SetoresResquest();
-		setores.setSetor("TI 8");
-		setores.setDescricao("Departamento de Tecnologia da Informação 8");
-		setores.setStatus(StatusSetor.ABERTO);
+		setoresRequest = new SetoresResquest();
+		setoresRequest.setSetor("TI 8");
+		setoresRequest.setDescricao("Departamento de Tecnologia da Informação 8");
+		setoresRequest.setStatus(StatusSetor.ABERTO);
 
-		funcionarios = new FuncionariosDTO();
-		funcionarios.setNome("Matheus");
-		funcionarios.setEmail("0e8Q2@example.com");
-		funcionarios.setIdade(20);
-		funcionarios.setCpf(new Cpf("12345678900"));
-		funcionarios.setDataNascimento(LocalDate.of(2000, 1, 1));
+		funcionariosRequest = new FuncionariosRequest();
+		funcionariosRequest.setNome("Matheus");
+		funcionariosRequest.setEmail("0e8Q2@example.com");
+		funcionariosRequest.setIdade(20);
+		funcionariosRequest.setCpf(new Cpf("12345678900"));
+		funcionariosRequest.setDataNascimento(LocalDate.of(2000, 1, 1));
 		SetoresModel setorModel = new SetoresModel();
 		setorModel.setId(1L);
-		funcionarios.setSetor(setorModel);
+		funcionariosRequest.setSetor(setorModel);
 
 	}
 
 	@Test
 	void testSetor() {
-		SetoresResponse mockResponse = new SetoresResponse();
-		mockResponse.setSetor("TI 8");
-		mockResponse.setDescricao("Departamento de Tecnologia da Informação 8");
-		mockResponse.setStatus(StatusSetor.ABERTO);
+		SetoresModel mockModel = new SetoresModel();
+		mockModel.setSetor("TI 8");
+		mockModel.setDescricao("Departamento de Tecnologia da Informação 8");
+		mockModel.setStatus(StatusSetor.ABERTO);
 
-		when(setoresService.criarSetor(setores)).thenReturn(mockResponse);
+		when(setoresService.criarSetor(setoresRequest)).thenReturn(mockModel);
 
-		SetoresResponse resultado = setoresService.criarSetor(setores);
+		SetoresModel resultado = setoresService.criarSetor(setoresRequest);
 
 		assertEquals("TI 8", resultado.getSetor());
 		assertEquals("Departamento de Tecnologia da Informação 8", resultado.getDescricao());
@@ -75,9 +76,21 @@ class DevApplicationTests {
 
 	@Test
 	void testFuncionarios() {
-		when(funcionariosService.criarNovoFuncionario(funcionarios)).thenReturn(funcionarios);
+		FuncionariosResponse mockResponse = new FuncionariosResponse();
+		mockResponse.setNome("Matheus");
+		mockResponse.setEmail("0e8Q2@example.com");
+		mockResponse.setIdade(20);
+		mockResponse.setCpf(new Cpf("12345678900"));
+		mockResponse.setDataNascimento(LocalDate.of(2000, 1, 1));
 
-		FuncionariosDTO resultado = funcionariosService.criarNovoFuncionario(funcionarios);
+		SetoresModel setorModel = new SetoresModel();
+		setorModel.setId(1L);
+		mockResponse.setSetor(setorModel);
+
+		// mock correto DEPOIS de criar o response
+		when(funcionariosService.criarNovoFuncionario(funcionariosRequest)).thenReturn(mockResponse);
+
+		FuncionariosResponse resultado = funcionariosService.criarNovoFuncionario(funcionariosRequest);
 
 		assertEquals("Matheus", resultado.getNome());
 		assertEquals("0e8Q2@example.com", resultado.getEmail());
@@ -86,4 +99,5 @@ class DevApplicationTests {
 		assertEquals(LocalDate.of(2000, 1, 1), resultado.getDataNascimento());
 		assertEquals(1L, resultado.getSetor().getId());
 	}
+
 }

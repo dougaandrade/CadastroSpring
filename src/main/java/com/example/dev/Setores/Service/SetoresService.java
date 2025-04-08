@@ -25,15 +25,16 @@ public class SetoresService {
     this.setoresRepository = setoresRepository;
   }
 
-  public SetoresResponse criarSetor(@Valid SetoresResquest setoresRequest) {
+  public SetoresModel criarSetor(@Valid SetoresResquest setoresRequest) {
     setoresRepository.findBySetor(setoresRequest.getSetor())
         .ifPresent(setor -> {
           throw new ValidException("Setor já cadastrado!");
         });
 
-    SetoresModel setor = setoresMapper.map(setoresRequest);
-    setor = setoresRepository.save(setor);
-    return setoresMapper.map(setor);
+    SetoresModel novoSetor = new SetoresModel();
+    novoSetor.setSetor(setoresRequest.getSetor());
+
+    return setoresRepository.save(novoSetor);
   }
 
   public List<SetoresResponse> listarSetor() {

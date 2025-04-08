@@ -5,6 +5,7 @@ import com.example.dev.Setores.Model.SetoresModel;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -15,6 +16,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "setor")
+@Builder
 public class FuncionariosModel {
 
     @Id

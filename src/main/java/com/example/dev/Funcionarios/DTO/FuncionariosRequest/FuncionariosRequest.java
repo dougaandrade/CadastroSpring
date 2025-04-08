@@ -1,8 +1,5 @@
-package com.example.dev.Funcionarios.DTO;
+package com.example.dev.Funcionarios.DTO.FuncionariosRequest;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 
 import com.example.dev.Funcionarios.Model.Cpf;
@@ -13,11 +10,19 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@NoArgsConstructor
+@Builder
 @AllArgsConstructor
-public class FuncionariosDTO {
+@NoArgsConstructor
+@Getter
+@Setter
+
+public class FuncionariosRequest {
 
   private Long codFuncionario;
 
@@ -40,4 +45,5 @@ public class FuncionariosDTO {
 
   @NotNull(message = "O setor é obrigatório")
   private SetoresModel setor;
+
 }

@@ -22,6 +22,6 @@ public class SetoresResponse {
   private String setor;
   private String descricao;
   private StatusSetor status;
-  // private List<FuncionariosModel> funcionarios;
+  private List<FuncionariosModel> funcionarios;
 
 }

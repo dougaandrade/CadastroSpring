@@ -2,37 +2,34 @@ package com.example.dev.Funcionarios.Mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.example.dev.Funcionarios.DTO.FuncionariosDTO;
+import com.example.dev.Funcionarios.DTO.FuncionariosRequest.FuncionariosRequest;
+import com.example.dev.Funcionarios.DTO.FuncionariosResponse.FuncionariosResponse;
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
 
 @Component
 public class FuncionariosMapper {
 
-  public FuncionariosModel map(FuncionariosDTO funcionariosDTO) {
-
-    FuncionariosModel funcionariosModel = new FuncionariosModel();
-    funcionariosModel.setCodFuncionario(funcionariosDTO.getCodFuncionario());
-    funcionariosModel.setNome(funcionariosDTO.getNome());
-    funcionariosModel.setEmail(funcionariosDTO.getEmail());
-    funcionariosModel.setIdade(funcionariosDTO.getIdade());
-    funcionariosModel.setCpf(funcionariosDTO.getCpf());
-    funcionariosModel.setDataNascimento(funcionariosDTO.getDataNascimento());
-    funcionariosModel.setSetor(funcionariosDTO.getSetor());
-
-    return funcionariosModel;
+  public FuncionariosModel mapToModel(FuncionariosRequest request) {
+    return FuncionariosModel.builder()
+        .codFuncionario(request.getCodFuncionario())
+        .nome(request.getNome())
+        .email(request.getEmail())
+        .idade(request.getIdade())
+        .cpf(request.getCpf())
+        .dataNascimento(request.getDataNascimento())
+        .setor(request.getSetor())
+        .build();
   }
 
-  public FuncionariosDTO map(FuncionariosModel funcionariosModel) {
-
-    FuncionariosDTO funcionariosDTO = new FuncionariosDTO();
-    funcionariosDTO.setCodFuncionario(funcionariosModel.getCodFuncionario());
-    funcionariosDTO.setNome(funcionariosModel.getNome());
-    funcionariosDTO.setEmail(funcionariosModel.getEmail());
-    funcionariosDTO.setIdade(funcionariosModel.getIdade());
-    funcionariosDTO.setCpf(funcionariosModel.getCpf());
-    funcionariosDTO.setDataNascimento(funcionariosModel.getDataNascimento());
-    funcionariosDTO.setSetor(funcionariosModel.getSetor());
-
-    return funcionariosDTO;
+  public FuncionariosResponse mapToResponse(FuncionariosModel model) {
+    return FuncionariosResponse.builder()
+        .codFuncionario(model.getCodFuncionario())
+        .nome(model.getNome())
+        .email(model.getEmail())
+        .idade(model.getIdade())
+        .cpf(model.getCpf())
+        .dataNascimento(model.getDataNascimento())
+        .setor(model.getSetor())
+        .build();
   }
 }

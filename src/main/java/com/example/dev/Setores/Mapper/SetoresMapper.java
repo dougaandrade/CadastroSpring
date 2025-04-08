@@ -9,32 +9,27 @@ import com.example.dev.Setores.Model.SetoresModel;
 @Component
 public class SetoresMapper {
 
-  public SetoresModel map(SetoresResquest setoresRequest) {
-    if (setoresRequest == null) {
-      return null;
-    }
+  // Request -> Model
+  public SetoresModel map(SetoresResquest request) {
 
     return SetoresModel.builder()
-        .id(setoresRequest.getId())
-        .setor(setoresRequest.getSetor())
-        .descricao(setoresRequest.getDescricao())
-        .status(setoresRequest.getStatus())
-        .funcionarios(setoresRequest.getFuncionarios()) // considerar mapear com FuncionarioMapper
+        .id(request.getId())
+        .setor(request.getSetor())
+        .descricao(request.getDescricao())
+        .status(request.getStatus())
+        .funcionarios(request.getFuncionarios()) // considerar mapear com FuncionarioMapper
         .build();
   }
 
-  public SetoresResponse map(SetoresModel setoresModel) {
-    if (setoresModel == null) {
-      return null;
-    }
+  // Model -> Response
+  public SetoresResponse map(SetoresModel model) {
 
     return SetoresResponse.builder()
-        .id(setoresModel.getId())
-        .setor(setoresModel.getSetor())
-        .descricao(setoresModel.getDescricao())
-        .status(setoresModel.getStatus())
-        // .funcionarios(setoresModel.getFuncionarios()) // considerar mapear com
-        // FuncionarioMapper
+        .id(model.getId())
+        .setor(model.getSetor())
+        .descricao(model.getDescricao())
+        .status(model.getStatus())
+        .funcionarios(model.getFuncionarios()) // considerar mapear com FuncionarioMapper
         .build();
   }
 }
