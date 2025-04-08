@@ -31,8 +31,6 @@ public class SetoresService {
           throw new ValidException("Setor já cadastrado!");
         });
 
-    // SetoresModel novoSetor = new SetoresModel();
-
     SetoresModel novoSetor = setoresMapper.map(setoresRequest);
 
     return setoresRepository.save(novoSetor);

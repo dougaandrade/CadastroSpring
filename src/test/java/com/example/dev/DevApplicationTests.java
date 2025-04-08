@@ -16,7 +16,6 @@ import com.example.dev.Enum.StatusSetor;
 import com.example.dev.Funcionarios.DTO.FuncionariosRequest.FuncionariosRequest;
 import com.example.dev.Funcionarios.DTO.FuncionariosResponse.FuncionariosResponse;
 import com.example.dev.Funcionarios.Model.Cpf;
-import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.example.dev.Funcionarios.Service.FuncionariosService;
 import com.example.dev.Setores.DTO.SetoresResquest.SetoresRequest;
 import com.example.dev.Setores.Model.SetoresModel;
