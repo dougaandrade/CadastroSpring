@@ -17,19 +17,17 @@ import com.example.dev.Funcionarios.Service.FuncionariosService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/user")
+@AllArgsConstructor
 public class FuncionariosController {
 
     private final FuncionariosService funcionariosService;
-
-    public FuncionariosController(FuncionariosService funcionariosService) {
-        this.funcionariosService = funcionariosService;
-    }
 
     @PostMapping("/criar")
     @Operation(summary = "Cria um novo funcionario", description = "Rota cria um novo funcionario e insere no banco de dados")

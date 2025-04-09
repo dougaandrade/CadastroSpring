@@ -18,16 +18,14 @@ import com.example.dev.Setores.DTO.SetoresResquest.SetoresRequest;
 import com.example.dev.Setores.Service.SetoresService;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/setor")
+@AllArgsConstructor
 public class SetoresController {
 
   SetoresService setoresService;
-
-  public SetoresController(SetoresService setoresService) {
-    this.setoresService = setoresService;
-  }
 
   // Post -- Mandar uma requisao para criar as missoes
 
