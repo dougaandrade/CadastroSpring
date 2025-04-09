@@ -17,7 +17,7 @@ public class SetoresMapper {
         .setor(request.getSetor())
         .descricao(request.getDescricao())
         .status(request.getStatus())
-        .funcionarios(request.getFuncionarios()) // considerar mapear com FuncionarioMapper
+        .funcionarios(request.getFuncionarios())
         .build();
   }
 
@@ -29,7 +29,7 @@ public class SetoresMapper {
         .setor(model.getSetor())
         .descricao(model.getDescricao())
         .status(model.getStatus())
-        .funcionarios(model.getFuncionarios()) // considerar mapear com FuncionarioMapper
+        .funcionarios(model.getFuncionarios())
         .build();
   }
 }

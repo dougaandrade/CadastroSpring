@@ -30,9 +30,7 @@ public class SetoresService {
         .ifPresent(setor -> {
           throw new ValidException("Setor já cadastrado!");
         });
-
     SetoresModel novoSetor = setoresMapper.map(setoresRequest);
-
     return setoresRepository.save(novoSetor);
   }
 
