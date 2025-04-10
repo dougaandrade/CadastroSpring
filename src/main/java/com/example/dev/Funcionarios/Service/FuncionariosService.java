@@ -62,11 +62,11 @@ public class FuncionariosService {
   }
 
   private void atualizarDadosFuncionario(FuncionariosModel funcionario, FuncionariosResponse request) {
-    funcionario.setNome(request.getNome());
-    funcionario.setEmail(request.getEmail());
-    funcionario.setIdade(request.getIdade());
-    funcionario.setCpf(request.getCpf());
-    funcionario.setDataNascimento(request.getDataNascimento());
-    funcionario.setSetor(request.getSetor());
+    Optional.ofNullable(request.getNome()).ifPresent(funcionario::setNome);
+    Optional.ofNullable(request.getEmail()).ifPresent(funcionario::setEmail);
+    Optional.ofNullable(request.getIdade()).ifPresent(funcionario::setIdade);
+    Optional.ofNullable(request.getCpf()).ifPresent(funcionario::setCpf);
+    Optional.ofNullable(request.getDataNascimento()).ifPresent(funcionario::setDataNascimento);
+    Optional.ofNullable(request.getSetor()).ifPresent(funcionario::setSetor);
   }
 }
