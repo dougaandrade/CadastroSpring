@@ -29,7 +29,7 @@ public class FuncionariosController {
 
     private final FuncionariosService funcionariosService;
 
-    @PostMapping()
+    @PostMapping
     @Operation(summary = "Cria um novo funcionario", description = "Rota cria um novo funcionario e insere no banco de dados")
     public ResponseEntity<FuncionariosResponse> criarFuncionario(@Valid @RequestBody FuncionariosRequest funcionario) {
         FuncionariosResponse criado = funcionariosService.criarNovoFuncionario(funcionario);

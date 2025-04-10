@@ -29,7 +29,7 @@ public class SetoresController {
 
   // Post -- Mandar uma requisao para criar as missoes
 
-  @PostMapping()
+  @PostMapping
   public ResponseEntity<String> criarSetor(@RequestBody SetoresRequest setores) {
     setoresService.criarSetor(setores);
     return ResponseEntity.status(201).body("Setor criado com sucesso");
