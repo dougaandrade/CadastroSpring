@@ -29,11 +29,11 @@ public class FuncionariosService {
   }
 
   public Optional<FuncionariosResponse> funcionariosByCod(Long codFuncionario) {
-    if (!funcionariosRepository.existsById(codFuncionario)) {
-      throw new ValidException("Funcionário não encontrado");
-    }
     return funcionariosRepository.findByCodFuncionario(codFuncionario)
-        .map(funcionariosMapper::mapToResponse);
+        .map(funcionariosMapper::mapToResponse)
+        .or(() -> {
+          throw new ValidException("Funcionário nao encontrado");
+        });
   }
 
   public FuncionariosResponse criarNovoFuncionario(FuncionariosRequest request) {
