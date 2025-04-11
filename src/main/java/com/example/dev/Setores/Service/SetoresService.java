@@ -13,17 +13,14 @@ import com.example.dev.Setores.Model.SetoresModel;
 import com.example.dev.Setores.Repository.SetoresRepository;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 @Service
 public class SetoresService {
 
   private final SetoresMapper setoresMapper;
   private final SetoresRepository setoresRepository;
-
-  public SetoresService(SetoresMapper setoresMapper, SetoresRepository setoresRepository) {
-    this.setoresMapper = setoresMapper;
-    this.setoresRepository = setoresRepository;
-  }
 
   public SetoresModel criarSetor(@Valid SetoresRequest setoresRequest) {
     setoresRepository.findBySetor(setoresRequest.getSetor())
