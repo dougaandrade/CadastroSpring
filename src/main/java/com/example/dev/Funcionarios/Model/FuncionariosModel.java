@@ -24,6 +24,7 @@ public class FuncionariosModel {
     @Column(name = "cod_funcionario")
     private Long codFuncionario;
 
+    @Column(name = "nome", unique = true)
     private String nome;
 
     private String email;
