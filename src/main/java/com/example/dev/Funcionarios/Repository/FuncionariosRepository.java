@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.example.dev.Funcionarios.DTO.FuncionariosResponse.FuncionariosResponse;
 import com.example.dev.Funcionarios.Model.Cpf;
 import com.example.dev.Funcionarios.Model.FuncionariosModel;
 import com.example.dev.Setores.Model.SetoresModel;
@@ -17,5 +18,7 @@ public interface FuncionariosRepository extends JpaRepository<FuncionariosModel,
   Optional<FuncionariosModel> findBySetor(SetoresModel setor);
 
   Optional<FuncionariosModel> findByCpf(Cpf cpf);
+
+  Optional<FuncionariosResponse> findByNome(String nome);
 
 }
