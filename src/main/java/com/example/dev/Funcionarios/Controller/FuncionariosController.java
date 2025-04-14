@@ -31,17 +31,22 @@ public class FuncionariosController {
 
     @PostMapping
     @Operation(summary = "Cria um novo funcionario", description = "Rota cria um novo funcionario e insere no banco de dados")
+
     public ResponseEntity<FuncionariosResponse> criarFuncionario(@Valid @RequestBody FuncionariosRequest funcionario) {
         FuncionariosResponse criado = funcionariosService.criarNovoFuncionario(funcionario);
         return ResponseEntity.status(HttpStatus.CREATED).body(criado);
     }
 
-    @GetMapping("/listar")
+    @GetMapping
+    @Operation(summary = "Listar todos os funcionarios", description = "Rota listar todos os funcionarios")
+
     public ResponseEntity<List<FuncionariosResponse>> listarFuncionarios() {
         return ResponseEntity.ok(funcionariosService.listarFuncionarios());
     }
 
     @GetMapping("/obter/{codFuncionario}")
+    @Operation(summary = "Busca um funcionario pelo codigo", description = "Rota busca um funcionario pelo codigo")
+
     public ResponseEntity<FuncionariosResponse> funcionarioPorId(@PathVariable Long codFuncionario) {
         return funcionariosService.funcionariosByCod(codFuncionario)
                 .map(ResponseEntity::ok)
@@ -49,6 +54,8 @@ public class FuncionariosController {
     }
 
     @PatchMapping("/alterar/{codFuncionario}")
+    @Operation(summary = "Altera um funcionario pelo codigo", description = "Rota altera um funcionario pelo codigo")
+
     public ResponseEntity<FuncionariosResponse> atualizarFuncionarioId(
             @PathVariable Long codFuncionario,
             @RequestBody FuncionariosResponse funcionarios) {
@@ -57,6 +64,8 @@ public class FuncionariosController {
     }
 
     @DeleteMapping("/deletar/{codFuncionario}")
+    @Operation(summary = "Deleta um funcionario pelo codigo", description = "Rota deleta um funcionario pelo codigo")
+
     public ResponseEntity<String> deletarFuncionarioByCod(@PathVariable Long codFuncionario) {
         funcionariosService.deletarFuncionarioCod(codFuncionario);
         return ResponseEntity.ok("Funcionário com o código " + codFuncionario + " deletado com sucesso");
