@@ -40,9 +40,6 @@ public class FuncionariosService {
     funcionariosRepository.findByCpf(request.getCpf()).ifPresent(funcionario -> {
       throw new ValidException("Funcionário já cadastrado com esse CPF!");
     });
-    funcionariosRepository.findByNome(request.getNome()).ifPresent(funcionario -> {
-      throw new ValidException("Funcionário já cadastrado com esse nome!");
-    });
     FuncionariosModel funcionario = funcionariosMapper.mapToModel(request);
     funcionario = funcionariosRepository.save(funcionario);
     return funcionariosMapper.mapToResponse(funcionario);
