@@ -9,7 +9,6 @@ Este projeto é um sistema de cadastro e gerenciamento de pessoas e setores, des
 - ✅ **PostgreSQL** – Banco de dados relacional utilizado na aplicação.
 - ✅ **Docker Compose** – Para orquestração do banco de dados.
 - ✅ **Lombok** – Para reduzir a verbosidade do código.
-- ✅ **Swagger** – Para documentação da API.
 - ✅ **Postman** – Para testes e desenvolvimento.
 - ✅ **DBeaver** – Cliente SQL para gerenciar o banco de dados.
 - ✅ **Scalar** - Para testes da API e documentação.
