@@ -7,8 +7,8 @@ public enum StatusSetor {
   ABERTO(0, "ABERTO"),
   FECHADO(1, "FECHADO");
 
-  private int cod;
-  private String descricao;
+  private final int cod;
+  private final String descricao;
 
   private StatusSetor(int cod, String descricao) {
     this.cod = cod;

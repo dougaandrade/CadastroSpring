@@ -10,4 +10,5 @@ public interface SetoresRepository extends JpaRepository<SetoresModel, Long> {
 
   Optional<SetoresModel> findBySetor(String setor);
 
+
 }
