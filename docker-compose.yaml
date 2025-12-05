@@ -1,11 +1,11 @@
 services:
   postgres:
     image: postgres:latest
-    container_name: cad_postgres_container
+    container_name: cadastro_postgres
     environment:
-      POSTGRES_DB: cad_postgres
+      POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5431:5432"
+      - "5401:5432"
     restart: always

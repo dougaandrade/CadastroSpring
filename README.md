@@ -47,23 +47,71 @@ cd seu-repositorio
 
 ### ⚙️ Configurando e Executando a Aplicação
 
+#### 1️⃣ Primeiro, inicie o banco de dados PostgreSQL:
+
 ```sh
-# Construir o projeto
-mvn clean install
+# Subir o banco de dados PostgreSQL em background
+docker-compose up -d postgres
 
-# Subir o banco de dados com Docker Compose
-docker-compose up -d
+# Verificar se o container está rodando
+docker ps
+```
 
-# Executar a aplicação
-mvn spring-boot:run
+#### 2️⃣ Compile o projeto:
+
+```sh
+# Limpar e compilar o projeto
+./mvnw clean compile
+
+# Ou fazer build completo com testes
+./mvnw clean install
+```
+
+#### 3️⃣ Execute a aplicação:
+
+```sh
+# Executar a aplicação Spring Boot
+./mvnw spring-boot:run
+```
+
+#### 4️⃣ Para parar os serviços:
+
+```sh
+# Parar a aplicação Spring Boot (Ctrl+C no terminal onde está rodando)
+
+# Parar e remover os containers Docker
+docker-compose down
 ```
 
 ### 🛠 Acessando a API
 
 Após iniciar o projeto, você pode acessar:
 
+- 🔹 **API REST:** [http://localhost:8080](http://localhost:8080)
 - 🔹 **Swagger UI:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
-- 🔹 **Banco de dados PostgreSQL:** Conectar-se via um cliente PostgreSQL (ex: DBeaver, pgAdmin) utilizando as credenciais configuradas no `docker-compose.yml`.
+- 🔹 **Actuator Health:** [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health)
+- 🔹 **Banco de dados PostgreSQL:**
+  - **Host:** localhost
+  - **Porta:** 5401
+  - **Database:** postgres
+  - **Username:** postgres
+  - **Password:** postgres
+
+## ⚙️ Configurações Importantes
+
+### 📌 Configuração do Banco de Dados
+
+O projeto está configurado para conectar no PostgreSQL via Docker na porta `5401`. As configurações estão em:
+
+- `application.properties`: URL de conexão e credenciais
+- `docker-compose.yaml`: Configuração do container PostgreSQL
+
+### 📌 Recursos Disponíveis
+
+- **JPA/Hibernate**: Criação automática das tabelas (`spring.jpa.hibernate.ddl-auto=update`)
+- **Flyway**: Configurado mas desabilitado por padrão
+- **Lombok**: Para reduzir código boilerplate
+- **OpenAPI/Swagger**: Documentação automática da API
 
 ## 📜 Licença
 
