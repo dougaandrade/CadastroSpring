@@ -113,6 +113,91 @@ O projeto está configurado para conectar no PostgreSQL via Docker na porta `540
 - **Lombok**: Para reduzir código boilerplate
 - **OpenAPI/Swagger**: Documentação automática da API
 
+## 📋 Exemplos de Requisições JSON
+
+### 🏢 Criar Setor
+
+```json
+POST http://localhost:8080/setores
+Content-Type: application/json
+
+{
+  "setor": "Tecnologia da Informação",
+  "descricao": "Setor responsável pelo desenvolvimento de sistemas, manutenção da infraestrutura tecnológica e suporte técnico aos usuários",
+  "status": "ABERTO",
+  "funcionarios": []
+}
+```
+
+### 👨‍💼 Criar Funcionário
+
+```json
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "nome":"Rica 5 ",
+    "email": "doug1@gmail.com",
+    "idade": 22,
+    "cpf": "10034021073",
+    "dataNascimento": "2003-02-12",
+    "setor": {
+        "id":1
+    }
+}
+```
+
+### 🔄 Atualizar Setor
+
+```json
+PUT http://localhost:8080/setores/{id}
+Content-Type: application/json
+
+{
+  "id": 1,
+  "setor": "Recursos Humanos",
+  "descricao": "Setor responsável pela gestão de pessoas, recrutamento e desenvolvimento profissional",
+  "status": "ABERTO",
+  "funcionarios": []
+}
+```
+
+### 📋 Endpoints Disponíveis
+
+#### Setores
+
+- `GET /setores` - Listar todos os setores
+- `GET /setores/{id}` - Buscar setor por ID
+- `POST /setores` - Criar novo setor
+- `PUT /setores/{id}` - Atualizar setor
+- `DELETE /setores/{id}` - Excluir setor
+
+#### Funcionários
+
+- `GET /funcionarios` - Listar todos os funcionários
+- `GET /funcionarios/{id}` - Buscar funcionário por ID
+- `POST /funcionarios` - Criar novo funcionário
+- `PUT /funcionarios/{id}` - Atualizar funcionário
+- `DELETE /funcionarios/{id}` - Excluir funcionário
+
+### 📝 Validações Importantes
+
+#### Para Setores:
+
+- **setor**: Entre 2 e 100 caracteres (obrigatório)
+- **descricao**: Entre 5 e 255 caracteres (obrigatório)
+- **status**: Deve ser `ABERTO` ou `FECHADO` (obrigatório)
+- **funcionarios**: Lista não pode ser null (pode estar vazia)
+
+#### Para Funcionários:
+
+- **nome**: Entre 2 e 100 caracteres (obrigatório)
+- **email**: Formato de email válido (obrigatório)
+- **idade**: Maior ou igual a 18 anos (obrigatório)
+- **cpf**: Formato válido xxx.xxx.xxx-xx
+- **dataNascimento**: Data no passado
+- **setor**: Setor válido e existente (obrigatório)
+
 ## 📜 Licença
 
 Este projeto está licenciado sob a MIT License – veja o arquivo LICENSE para mais detalhes.
